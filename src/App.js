@@ -1,7 +1,23 @@
-import React from 'react';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from "react-router-dom";
+import Survey from "./survey/pages/Survey";
 
 const App = () => {
-  return <h1>A React App!</h1>;
+  return (
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <Survey />
+        </Route>
+        <Redirect to="/" />
+      </Switch>
+    </Router>
+  );
 };
 
 export default App;
