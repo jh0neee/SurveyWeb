@@ -13,7 +13,7 @@ body {
   background: lightgray;
 }
 
-.slide-in-left-enter {
+.slide-in-left-enter { /* side-bar transition */
   transform: translateX(-100%);
 }
 

@@ -6,29 +6,29 @@ import NavLinks from "./NavLinks";
 import SideDrawer from "./SideDrawer";
 import CloseIcon from "../../../asset/image/close.svg";
 import "./MainNavigation.css";
+import Backdrop from "../UIElement/Backdrop";
 
 const MainNavigation = (props) => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
-  
+
   const openDrawer = () => {
     setDrawerIsOpen(true);
-  }
+  };
   const closeDrawer = () => {
     setDrawerIsOpen(false);
-  }
+  };
 
   return (
     <React.Fragment>
-      {drawerIsOpen && (
-        <SideDrawer>
-          <button className="main-navigation__drawer-btn" onClick={closeDrawer}>
-            <img src={CloseIcon} alt='close' />
-          </button>
-          <nav className="main-navigation__drawer-nav">
-            <NavLinks />
-          </nav>
-        </SideDrawer>
-      )}
+      {drawerIsOpen && <Backdrop onClick={closeDrawer} />}
+      <SideDrawer show={drawerIsOpen}>
+        <button className="main-navigation__drawer-btn" onClick={closeDrawer}>
+          <img src={CloseIcon} alt="close" />
+        </button>
+        <nav className="main-navigation__drawer-nav">
+          <NavLinks onClick={closeDrawer} />
+        </nav>
+      </SideDrawer>
       <MainHeader>
         <button className="main-navigation__menu-btn" onClick={openDrawer}>
           <span />
