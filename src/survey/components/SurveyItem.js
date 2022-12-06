@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Card from "../../shared/components/UIElement/Card";
-
-import "./SurveyItem.css";
+import "../styles/SurveyItem.css";
 
 const SurveyItem = (props) => {
   return (

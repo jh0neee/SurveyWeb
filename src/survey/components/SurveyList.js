@@ -1,8 +1,7 @@
 import React from "react";
 
 import SurveyItem from "./SurveyItem";
-
-import "./SurveyList.css";
+import "../styles/SurveyList.css";
 
 const SurveyList = (props) => {
   return (

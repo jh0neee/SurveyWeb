@@ -5,17 +5,26 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
+
+import MainNavigation from "./shared/components/Navigation/MainNavigation";
+import Home from "./survey/pages/Home";
 import Survey from "./survey/pages/Survey";
 
 const App = () => {
   return (
     <Router>
-      <Switch>
-        <Route path="/" exact>
-          <Survey />
-        </Route>
-        <Redirect to="/" />
-      </Switch>
+      <MainNavigation />
+      <main>
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/survey" exact>
+            <Survey />
+          </Route>
+          <Redirect to="/" />
+        </Switch>
+      </main>
     </Router>
   );
 };
