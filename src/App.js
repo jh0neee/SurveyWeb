@@ -9,6 +9,7 @@ import {
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import Home from "./survey/pages/Home";
 import Survey from "./survey/pages/Survey";
+import PostView from "./post/page/PostView";
 
 const App = () => {
   return (
@@ -21,6 +22,9 @@ const App = () => {
           </Route>
           <Route path="/survey" exact>
             <Survey />
+          </Route>
+          <Route path="/:userId/content" exact>
+            <PostView />
           </Route>
           <Redirect to="/" />
         </Switch>
