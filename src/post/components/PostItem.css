@@ -1,19 +1,30 @@
 @import '../../reset.css';
 
 .post-view-wrapper {
-  width: 60%;
+  width: 80%;
+  padding-top: 20px;
   margin: 0 auto;
 }
 
-.post-view-go-list-btn {
+.post-view-btn {
+  display: flex;
+  justify-content: space-around;
   border: 0;
   padding: 10px;
-  background-color: #ffd9d9;
 }
 
 .post-view-row {
   margin: 10px 0;
   display: flex;
+}
+
+.post-survey {
+  height: 20rem;
+  width: 100%;
+}
+
+.post-content {
+  min-height: 270px;
 }
 
 .post-view-row > label:first-child {
@@ -25,4 +36,17 @@
 .post-view-row > *:nth-child(2) {
   margin: 10px 0;
   width: 70%;
+}
+
+.post-item__modal-content {
+  padding: 0;
+}
+
+.post-item__modal-actions {
+  text-align: right;
+}
+
+.post-item__actions button,
+.post-item__actions a {
+  margin: 0.5rem;
 }
