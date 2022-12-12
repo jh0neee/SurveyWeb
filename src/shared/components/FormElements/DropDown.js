@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import './DropDown.css';
 
@@ -15,7 +15,7 @@ const Dropdown = () => {
                 {isActive ? "선택해" : "선택값"}
             </div>
             <Droplist actived={isActive}>
-                <ul>
+                <ul className='dropdown-menu'>
                     <li>주관식</li>
                     <li>객관식</li>
                     <li>체크박스</li>
@@ -26,10 +26,20 @@ const Dropdown = () => {
 }
 
 const Droplist = (props) => {
+    const [activedAnimation, setActivedAnimation] = useState(false);
+
+    useEffect(() => {
+        if(props.actived) setActivedAnimation(true);
+        else{
+            setTimeout(() => {
+                setActivedAnimation(false);
+            }, 400);
+        }
+    });
 
   return (
     <article className={`${props.actived ? 'dropdown-fade-in' : 'dropdown-fade-out'}`}>
-        {props.actived && props.children}
+        {activedAnimation && props.children}
     </article>
   );
 };
