@@ -53,6 +53,7 @@ const PostItem = (props) => {
           <Button inverse onClick={openModalHandler}>
             설문하기
           </Button>
+          <Button to="/newpost">예시</Button>
           <Button to={`/post/${props.id}`}>수정하기</Button>
           <Button danger>삭제하기</Button>
         </div>

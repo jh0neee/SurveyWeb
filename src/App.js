@@ -10,6 +10,7 @@ import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import Home from "./survey/pages/Home";
 import Survey from "./survey/pages/Survey";
 import PostView from "./post/page/PostView";
+import NewPost from "./post/page/NewPost";
 
 const App = () => {
   return (
@@ -25,6 +26,9 @@ const App = () => {
           </Route>
           <Route path="/:userId/content" exact>
             <PostView />
+          </Route>
+          <Route path="/newpost" exact>
+            <NewPost />
           </Route>
           <Redirect to="/" />
         </Switch>
