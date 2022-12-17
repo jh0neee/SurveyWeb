@@ -51,8 +51,13 @@ const NewPost = () => {
     );
   }, []);
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(formState.inputs); // backend 연결
+  };
+
   return (
-    <form className="post-form">
+    <form className="post-form" onSubmit={submitHandler}>
       <div className="top-container">
         <DropBox />
         <Button>+ 추가</Button>
