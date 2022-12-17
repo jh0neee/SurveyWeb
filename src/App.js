@@ -11,6 +11,7 @@ import Home from "./survey/pages/Home";
 import Survey from "./survey/pages/Survey";
 import PostView from "./post/page/PostView";
 import NewPost from "./post/page/NewPost";
+import UpdatePost from "./post/page/UpdatePost";
 
 const App = () => {
   return (
@@ -27,8 +28,11 @@ const App = () => {
           <Route path="/:userId/content" exact>
             <PostView />
           </Route>
-          <Route path="/newpost" exact>
+          <Route path="/post/new" exact>
             <NewPost />
+          </Route>
+          <Route path="/posts/:contentId">
+            <UpdatePost />
           </Route>
           <Redirect to="/" />
         </Switch>
