@@ -2,8 +2,12 @@ import React, { useCallback, useReducer } from "react";
 
 import Button from "../../shared/components/FormElements/Button";
 import Input from "../../shared/components/FormElements/Input";
-import DropBox from "../../shared/components/FormElements/DropBox";
-import "./NewPost.css";
+// import DropBox from "../../shared/components/FormElements/DropBox";
+import {
+  VALIDATOR_MINLENGTH,
+  VALIDATOR_REQUIRE,
+} from "../../shared/util/validators";
+import "./PostForm.css";
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -32,11 +36,12 @@ const formReducer = (state, action) => {
 const NewPost = () => {
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
+      // 개별 입력값이 유효한지
       title: {
         value: "",
         isValid: false,
       },
-      answer: {
+      content: {
         value: "",
         isValid: false,
       },
@@ -58,30 +63,33 @@ const NewPost = () => {
 
   return (
     <form className="post-form" onSubmit={submitHandler}>
-      <div className="top-container">
+      {/* <div className="top-container">
         <DropBox />
         <Button>+ 추가</Button>
-      </div>
+      </div> */}
       <Input
         id="title"
         element="input"
         type="text"
         label="Title"
-        validators={[]}
+        validators={[VALIDATOR_REQUIRE]}
         errorText="입력하세요!"
         onInput={inputHandler}
       />
       <Input
-        id="answer"
+        id="content"
         element="textarea"
-        label="Answer"
-        validators={[]}
+        label="Content"
+        validators={[VALIDATOR_MINLENGTH(5)]}
         errorText="입력하세요!"
         onInput={inputHandler}
       />
-      <Button type="submit" disabled={!formState.isValid}>
-        제출
-      </Button>
+      <div className="top-container">
+        <Button>설문 등록</Button>
+        <Button type="submit" disabled={!formState.isValid}>
+          글 쓰기
+        </Button>
+      </div>
     </form>
   );
 };

@@ -1,7 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+
 import Button from "../../shared/components/FormElements/Button";
 import Input from "../../shared/components/FormElements/Input";
+import {
+  VALIDATOR_MINLENGTH,
+  VALIDATOR_REQUIRE,
+} from "../../shared/util/validators";
+import "./PostForm.css";
 
 const DUMMY_POST = [
   {
@@ -31,8 +37,8 @@ const DUMMY_POST = [
 ];
 
 const UpdatePost = () => {
-  const postId = useParams().postId;
-  const identifiedPost = DUMMY_POST.find((p) => p.id === postId);
+  const contentId = useParams().contentId;
+  const identifiedPost = DUMMY_POST.find((post) => post.id === contentId);
 
   if (!identifiedPost) {
     return (
@@ -43,29 +49,34 @@ const UpdatePost = () => {
   }
 
   return (
-    <form>
+    <form className="post-form">
       <Input
         id="title"
         element="input"
         type="text"
         lable="Title"
-        validators={[]}
-        errorText='입력해주세요'
-        oninput={() => {}}
+        validators={[VALIDATOR_REQUIRE()]}
+        errorText="입력해주세요"
+        onInput={() => {}}
         value={identifiedPost.title}
         valid={true}
       />
       <Input
-        id="answer"
+        id="content"
         element="textarea"
-        lable="Answer"
-        validators={[]}
-        errorText='입력해주세요'
-        oninput={() => {}}
-        value={identifiedPost.answer}
+        lable="Content"
+        validators={[VALIDATOR_MINLENGTH(5)]}
+        errorText="입력해주세요"
+        onInput={() => {}}
+        value={identifiedPost.content}
         valid={true}
       />
-      <Button type='submit' disabled={true}>수정</Button>
+      <div className="top-container">
+        <Button>설문 수정</Button>
+        <Button type="submit" disabled={true}>
+          수정
+        </Button>
+      </div>
     </form>
   );
 };

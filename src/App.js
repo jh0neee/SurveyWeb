@@ -31,7 +31,7 @@ const App = () => {
           <Route path="/post/new" exact>
             <NewPost />
           </Route>
-          <Route path="/posts/:contentId">
+          <Route path="/post/:contentId">
             <UpdatePost />
           </Route>
           <Redirect to="/" />
