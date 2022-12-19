@@ -7,6 +7,7 @@ import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE,
 } from "../../shared/util/validators";
+import { useForm } from "../../shared/hooks/form-hook";
 import "./PostForm.css";
 
 const DUMMY_POST = [
@@ -38,7 +39,27 @@ const DUMMY_POST = [
 
 const UpdatePost = () => {
   const contentId = useParams().contentId;
+
   const identifiedPost = DUMMY_POST.find((post) => post.id === contentId);
+
+  const [formState, inputHandler] = useForm(
+    {
+      title: {
+        value: identifiedPost.title,
+        isValid: true,
+      },
+      content: {
+        value: identifiedPost.content,
+        isValid: true,
+      },
+    },
+    true
+  );
+
+  const postUpdateSubmitHandler = (e) => {
+    e.preventDefault();
+    console.log(formState.inputs);
+  };
 
   if (!identifiedPost) {
     return (
@@ -49,7 +70,7 @@ const UpdatePost = () => {
   }
 
   return (
-    <form className="post-form">
+    <form className="post-form" onSubmit={postUpdateSubmitHandler}>
       <Input
         id="title"
         element="input"
@@ -57,9 +78,9 @@ const UpdatePost = () => {
         lable="Title"
         validators={[VALIDATOR_REQUIRE()]}
         errorText="입력해주세요"
-        onInput={() => {}}
-        value={identifiedPost.title}
-        valid={true}
+        onInput={inputHandler}
+        initialValue={formState.inputs.title.value}
+        initialValid={formState.inputs.title.isValid}
       />
       <Input
         id="content"
@@ -67,13 +88,13 @@ const UpdatePost = () => {
         lable="Content"
         validators={[VALIDATOR_MINLENGTH(5)]}
         errorText="입력해주세요"
-        onInput={() => {}}
-        value={identifiedPost.content}
-        valid={true}
+        onInput={inputHandler}
+        initialValue={formState.inputs.content.value}
+        initialValid={formState.inputs.content.isValid}
       />
       <div className="top-container">
         <Button>설문 수정</Button>
-        <Button type="submit" disabled={true}>
+        <Button type="submit" disabled={!formState.isValid}>
           수정
         </Button>
       </div>
