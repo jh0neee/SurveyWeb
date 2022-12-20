@@ -92,8 +92,7 @@ const UpdatePost = () => {
         initialValue={formState.inputs.content.value}
         initialValid={formState.inputs.content.isValid}
       />
-      <div className="top-container">
-        <Button>설문 수정</Button>
+      <div className="bottom-container">
         <Button type="submit" disabled={!formState.isValid}>
           수정
         </Button>

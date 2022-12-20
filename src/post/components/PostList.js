@@ -5,7 +5,7 @@ import "./PostList.css";
 
 const PostList = (props) => {
   return (
-    <ul className="place-list">
+    <ul className="post-list">
       {props.items.map((post) => (
         <PostItem
           key={post.id}

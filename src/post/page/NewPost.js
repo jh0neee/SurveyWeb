@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer } from "react";
+import React from "react";
 
 import Button from "../../shared/components/FormElements/Button";
 import Input from "../../shared/components/FormElements/Input";
@@ -51,8 +51,7 @@ const NewPost = () => {
         errorText="입력하세요!"
         onInput={inputHandler}
       />
-      <div className="top-container">
-        <Button>설문 등록</Button>
+      <div className="bottom-container">
         <Button type="submit" disabled={!formState.isValid}>
           글 쓰기
         </Button>
