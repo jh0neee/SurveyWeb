@@ -12,6 +12,7 @@ import Survey from "./survey/pages/Survey";
 import PostView from "./post/page/PostView";
 import NewPost from "./post/page/NewPost";
 import UpdatePost from "./post/page/UpdatePost";
+import Auth from "./survey/pages/Auth";
 
 const App = () => {
   return (
@@ -33,6 +34,9 @@ const App = () => {
           </Route>
           <Route path="/post/:contentId">
             <UpdatePost />
+          </Route>
+          <Route path="/auth">
+            <Auth />
           </Route>
           <Redirect to="/" />
         </Switch>
