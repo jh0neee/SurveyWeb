@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import Button from "../../shared/components/FormElements/Button";
@@ -38,23 +38,41 @@ const DUMMY_POST = [
 ];
 
 const UpdatePost = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const contentId = useParams().contentId;
+
+  const [formState, inputHandler, setFormData] = useForm(
+    {
+      title: {
+        value: "",
+        isValid: false,
+      },
+      content: {
+        value: "",
+        isValid: false,
+      },
+    },
+    false
+  );
 
   const identifiedPost = DUMMY_POST.find((post) => post.id === contentId);
 
-  const [formState, inputHandler] = useForm(
-    {
-      title: {
-        value: identifiedPost.title,
-        isValid: true,
+  useEffect(() => {
+    setFormData(
+      {
+        title: {
+          value: identifiedPost.title,
+          isValid: true,
+        },
+        content: {
+          value: identifiedPost.content,
+          isValid: true,
+        },
       },
-      content: {
-        value: identifiedPost.content,
-        isValid: true,
-      },
-    },
-    true
-  );
+      true
+    );
+    setIsLoading(false);
+  }, [setFormData, identifiedPost]);
 
   const postUpdateSubmitHandler = (e) => {
     e.preventDefault();
@@ -65,6 +83,14 @@ const UpdatePost = () => {
     return (
       <div className="center">
         <h2>찾을 수 없습니다.</h2>
+      </div>
+    );
+  }
+
+  if(isLoading) {
+    return (
+      <div className="center">
+        <h2>로딩 중...</h2>
       </div>
     );
   }
