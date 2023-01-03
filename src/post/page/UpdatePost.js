@@ -58,19 +58,22 @@ const UpdatePost = () => {
   const identifiedPost = DUMMY_POST.find((post) => post.id === contentId);
 
   useEffect(() => {
-    setFormData(
-      {
-        title: {
-          value: identifiedPost.title,
-          isValid: true,
+    if (identifiedPost) {
+      setFormData(
+        {
+          title: {
+            value: identifiedPost.title,
+            isValid: true,
+          },
+          content: {
+            value: identifiedPost.content,
+            isValid: true,
+          },
         },
-        content: {
-          value: identifiedPost.content,
-          isValid: true,
-        },
-      },
-      true
-    );
+        true
+      );
+    }
+
     setIsLoading(false);
   }, [setFormData, identifiedPost]);
 
@@ -87,7 +90,7 @@ const UpdatePost = () => {
     );
   }
 
-  if(isLoading) {
+  if (isLoading) {
     return (
       <div className="center">
         <h2>로딩 중...</h2>
