@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import Button from "../../shared/components/FormElements/Button";
 import Modal from "../../shared/components/UIElement/Modal";
+import { AuthContext } from "../../shared/context/auth-context";
 import "./PostItem.css";
 
 const PostItem = (props) => {
+  const auth = useContext(AuthContext)
   const [showModal, setShowModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
@@ -54,7 +56,7 @@ const PostItem = (props) => {
       <li>
       <div className="post-top-view-btn">
           <Button to="/survey"> ◀ 목록 </Button>
-          <Button>설문등록</Button>
+          {auth.isLoggedIn && <Button>설문등록</Button>}
         </div>
         <div className="post-view-wrapper">
           <div className="post-view-row">
@@ -79,8 +81,8 @@ const PostItem = (props) => {
             설문하기
           </Button>
           <Button>결과</Button>
-          <Button to={`/post/${props.id}`}>수정하기</Button>
-          <Button danger onClick={showDeleteWarningHandler}>삭제하기</Button>
+          {auth.isLoggedIn && <Button to={`/post/${props.id}`}>수정하기</Button>}
+          {auth.isLoggedIn && <Button danger onClick={showDeleteWarningHandler}>삭제하기</Button>}
         </div>
       </li>
     </React.Fragment>
