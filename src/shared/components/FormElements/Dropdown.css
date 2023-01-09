@@ -1,0 +1,49 @@
+.dropbox-container {
+  left: -1rem;
+  width: 250px;
+  user-select: none;
+  position: relative;
+}
+
+.dropbox-select_btn {
+  padding: 1rem 1.2rem;
+  background: #fff;
+
+  border: 1px solid rgba(224, 226, 231, 0.75);
+  border-radius: 0.3rem;
+
+  font-size: 15px;
+  font-weight: bold;
+  color: #333;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  width: 100%;
+  top: 110%;
+  left: 0;
+
+  padding: 10px;
+  background: #fff;
+
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  font-weight: 500;
+  color: #333;
+}
+
+
+.dropdown-option {
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.4s; 
+}
+
+.dropdown-option:hover {
+  background: #f4f4f4;
+}

@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 
 import Button from "../../shared/components/FormElements/Button";
+import DropBox from "../../shared/components/FormElements/DropBox";
 import Modal from "../../shared/components/UIElement/Modal";
 import { AuthContext } from "../../shared/context/auth-context";
 import "../styles/PostItem.css";
-import SurveyForm from "./SurveyForm";
 
 const PostItem = (props) => {
   const auth = useContext(AuthContext)
@@ -37,7 +37,7 @@ const PostItem = (props) => {
         }
       >
         <div className="post-survey">
-          <SurveyForm />
+          <DropBox />
           <h2>설문내용</h2>
         </div>
       </Modal>

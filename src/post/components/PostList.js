@@ -3,10 +3,10 @@ import React from "react";
 import PostItem from "./PostItem";
 import "../styles/PostList.css";
 
-const PostList = (props) => {
+const PostList = ({items}) => {
   return (
     <ul className="post-list">
-      {props.items.map((post) => (
+      {items.map((post) => (
         <PostItem
           key={post.id}
           id={post.id}
