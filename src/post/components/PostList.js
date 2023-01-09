@@ -1,7 +1,7 @@
 import React from "react";
 
 import PostItem from "./PostItem";
-import "./PostList.css";
+import "../styles/PostList.css";
 
 const PostList = (props) => {
   return (

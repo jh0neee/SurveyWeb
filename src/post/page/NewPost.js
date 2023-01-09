@@ -2,13 +2,12 @@ import React from "react";
 
 import Button from "../../shared/components/FormElements/Button";
 import Input from "../../shared/components/FormElements/Input";
-// import DropBox from "../../shared/components/FormElements/DropBox";
 import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE,
 } from "../../shared/util/validators";
 import { useForm } from "../../shared/hooks/form-hook";
-import "./PostForm.css";
+import "../styles/PostForm.css";
 
 const NewPost = () => {
   const [formState, inputHandler] = useForm(
@@ -30,10 +29,6 @@ const NewPost = () => {
 
   return (
     <form className="post-form" onSubmit={submitHandler}>
-      {/* <div className="top-container">
-        <DropBox />
-        <Button>+ 추가</Button>
-      </div> */}
       <Input
         id="title"
         element="input"

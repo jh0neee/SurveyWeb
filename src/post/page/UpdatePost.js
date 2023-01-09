@@ -8,7 +8,7 @@ import {
   VALIDATOR_REQUIRE,
 } from "../../shared/util/validators";
 import { useForm } from "../../shared/hooks/form-hook";
-import "./PostForm.css";
+import "../styles/PostForm.css";
 
 const DUMMY_POST = [
   {
