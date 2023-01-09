@@ -15,13 +15,13 @@ const NavLinks = (props) => {
             <NavLink to='/survey' exact>Reserch</NavLink>
         </li>
         <li onClick={props.onClick}>
-            <NavLink to='/survey/request'>설문요청</NavLink>
+            <NavLink to='/survey/request' exact>Request</NavLink>
         </li>
         {!auth.isLoggedIn && <li onClick={props.onClick}>
-            <NavLink to='/auth'>로그인</NavLink>
+            <NavLink to='/auth'>Login</NavLink>
         </li>}
         {auth.isLoggedIn && <li onClick={props.onClick}>
-            <button onClick={auth.logout}>로그아웃</button>    
+            <button onClick={auth.logout}>Logout</button>    
         </li>}
     </ul>;
 }

@@ -14,6 +14,7 @@ import NewPost from "./post/page/NewPost";
 import UpdatePost from "./post/page/UpdatePost";
 import Auth from "./survey/pages/Auth";
 import { AuthContext } from "./shared/context/auth-context";
+import ReqSurvey from "./survey/pages/ReqSurvey";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -35,6 +36,9 @@ const App = () => {
         </Route>
         <Route path="/survey" exact>
           <Survey />
+        </Route>
+        <Route path="/survey/request" exact>
+          <ReqSurvey />
         </Route>
         <Route path="/:userId/content" exact>
           <PostView />

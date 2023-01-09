@@ -22,11 +22,19 @@ const DUMMY_POST = [
   },
   {
     id: 'p3',
-    title: '식사 투표',
+    title: 'A학교 교직원 석식여부 조사',
     createDate: '2022.10.11',
-    author: '안영',
+    author: '박문자',
     content: '뭐 먹을지 투표',
     creator: 's3'
+  },
+  {
+    id: 'p4',
+    title: 'V기업 출퇴근시간 조정 여부 조사',
+    createDate: '2022.10.11',
+    author: '김말영',
+    content: '몇시 출근하고 퇴근하고 싶은지 선택',
+    creator: 's4'
   },
 ];
 
