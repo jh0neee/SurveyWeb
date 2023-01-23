@@ -1,25 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 import Button from "../../shared/components/FormElements/Button";
 import SurveyList from "../components/SurveyList";
+import ErrorModal from "../../shared/components/UIElement/ErrorModal";
+import LoadingSpinner from "../../shared/components/UIElement/LoadingSpinner";
+import { useFetch } from "../../shared/hooks/fetch-hook";
 
 const Survey = () => {
-  const DUMMYSV = [
-    // 더미데이터
-    {
-      id: "s1",
-      title: "만족도 조사",
-      author: "작성자",
-    },
-    {
-      id: "s2",
-      title: "2022 NewCastle 모집자 설문조사",
-      author: "지현",
-    },
-  ];
+  const { isLoading, error, sendRequest, clearError } = useFetch();
+  const [loadedPost, setLoadedPost] = useState();
+
+  
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const responseData = await sendRequest("http://localhost:5000/api/posts");
+  
+        setLoadedPost(responseData.posts);
+      } catch (err) {}
+    };
+    fetchPosts();
+  }, [sendRequest]);
 
   return (
     <React.Fragment>
-      <SurveyList items={DUMMYSV} />
+      <ErrorModal error={error} onClear={clearError} />
+      {isLoading && (
+        <div className="center">
+          <LoadingSpinner />
+        </div>
+      )}
+      {!isLoading && loadedPost && <SurveyList items={loadedPost} />}
       <div className="center">
         <Button to="/post/new">새 글쓰기</Button>
       </div>
