@@ -43,7 +43,7 @@ const App = () => {
         <Route path="/survey/request" exact>
           <ReqSurvey />
         </Route>
-        <Route path="/:userId/content" exact>
+        <Route path="/:postId/content" exact>
           <PostView />
         </Route>
         <Route path="/post/new" exact>
@@ -64,7 +64,7 @@ const App = () => {
         <Route path="/survey" exact>
           <Survey />
         </Route>
-        <Route path="/:userId/content" exact>
+        <Route path="/:postId/content" exact>
           <PostView />
         </Route>
         <Route path="/auth">
