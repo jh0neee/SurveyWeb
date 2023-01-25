@@ -29,6 +29,13 @@ const PostView = () => {
     fetchPosts();
   }, [sendRequest, postId]);
 
+  // deletePost
+  const postDeletedHandler = (deletedPostId) => {
+    setloadedContents((prev) =>
+      prev.filter((post) => post.id !== deletedPostId)
+    );
+  };
+  
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
@@ -37,7 +44,7 @@ const PostView = () => {
           <LoadingSpinner />
         </div>
       )}
-      {!isLoading && loadedContents && <PostList items={loadedContents} />}
+      {!isLoading && loadedContents && <PostList items={loadedContents} onDeletePost={postDeletedHandler} />}
     </React.Fragment>
   );
 };

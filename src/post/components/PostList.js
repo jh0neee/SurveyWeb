@@ -14,6 +14,7 @@ const PostList = (props) => {
           createDate={post.createDate}
           author={post.author}
           content={post.content}
+          onDelete={props.onDeletePost}
         />
       ))}
     </ul>

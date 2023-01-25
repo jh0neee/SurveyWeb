@@ -1,13 +1,19 @@
 import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 
 import Button from "../../shared/components/FormElements/Button";
 import DropBox from "../../shared/components/FormElements/DropBox";
 import Modal from "../../shared/components/UIElement/Modal";
+import ErrorModal from "../../shared/components/UIElement/ErrorModal";
+import LoadingSpinner from "../../shared/components/UIElement/LoadingSpinner";
 import { AuthContext } from "../../shared/context/auth-context";
+import { useFetch } from "../../shared/hooks/fetch-hook";
 import "../styles/PostItem.css";
 
 const PostItem = (props) => {
+  const { isLoading, error, sendRequest, clearError } = useFetch();
   const auth = useContext(AuthContext);
+  const history = useHistory();
   const [showModal, setShowModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
@@ -16,13 +22,23 @@ const PostItem = (props) => {
 
   const showDeleteWarningHandler = () => setShowConfirmModal(true);
   const cancelDeleteHandler = () => setShowConfirmModal(false);
-  const confirmDeleteHandler = () => {
+
+  const confirmDeleteHandler = async () => {
     setShowConfirmModal(false);
-    console.log("삭제 중..");
+    try {
+      await sendRequest(
+        `http://localhost:5000/api/posts/${props.id}`,
+        "DELETE"
+      );
+      props.onDelete(props.id);
+
+      history.push("/survey");
+    } catch (err) {}
   };
 
   return (
     <React.Fragment>
+      <ErrorModal error={error} onClear={clearError} />
       <Modal
         show={showModal}
         onCancel={closeModalHandler}
@@ -60,6 +76,7 @@ const PostItem = (props) => {
         <p>삭제하시겠습니까? 삭제 후에는 취소할 수 없습니다.</p>
       </Modal>
       <li>
+        {isLoading && <LoadingSpinner asOverlay />}
         <div className="post-top-view-btn">
           <Button to="/survey"> ◀ 목록 </Button>
           {auth.isLoggedIn && <Button>설문등록</Button>}
@@ -87,10 +104,10 @@ const PostItem = (props) => {
             설문하기
           </Button>
           <Button>결과</Button>
-          {auth.isLoggedIn && (
+          {auth.userId === props.author && (
             <Button to={`/${props.id}/update`}>수정하기</Button>
           )}
-          {auth.isLoggedIn && (
+          {auth.userId === props.author && (
             <Button danger onClick={showDeleteWarningHandler}>
               삭제하기
             </Button>
