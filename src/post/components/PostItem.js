@@ -7,7 +7,7 @@ import { AuthContext } from "../../shared/context/auth-context";
 import "../styles/PostItem.css";
 
 const PostItem = (props) => {
-  const auth = useContext(AuthContext)
+  const auth = useContext(AuthContext);
   const [showModal, setShowModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
@@ -48,15 +48,19 @@ const PostItem = (props) => {
         footerClass="post-item__modal-actions"
         footer={
           <React.Fragment>
-            <Button inverse onClick={cancelDeleteHandler}>CANCEL</Button>
-            <Button danger onClick={confirmDeleteHandler}>DELETE</Button>
+            <Button inverse onClick={cancelDeleteHandler}>
+              CANCEL
+            </Button>
+            <Button danger onClick={confirmDeleteHandler}>
+              DELETE
+            </Button>
           </React.Fragment>
         }
       >
         <p>삭제하시겠습니까? 삭제 후에는 취소할 수 없습니다.</p>
       </Modal>
       <li>
-      <div className="post-top-view-btn">
+        <div className="post-top-view-btn">
           <Button to="/survey"> ◀ 목록 </Button>
           {auth.isLoggedIn && <Button>설문등록</Button>}
         </div>
@@ -83,8 +87,14 @@ const PostItem = (props) => {
             설문하기
           </Button>
           <Button>결과</Button>
-          {auth.isLoggedIn && <Button to={`/post/${props.id}`}>수정하기</Button>}
-          {auth.isLoggedIn && <Button danger onClick={showDeleteWarningHandler}>삭제하기</Button>}
+          {auth.isLoggedIn && (
+            <Button to={`/${props.id}/update`}>수정하기</Button>
+          )}
+          {auth.isLoggedIn && (
+            <Button danger onClick={showDeleteWarningHandler}>
+              삭제하기
+            </Button>
+          )}
         </div>
       </li>
     </React.Fragment>
