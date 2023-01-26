@@ -49,7 +49,7 @@ const App = () => {
         <Route path="/post/new" exact>
           <NewPost />
         </Route>
-        <Route path="/post/:contentId">
+        <Route path="/:postId/update" exact>
           <UpdatePost />
         </Route>
         <Redirect to="/" />
