@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import Button from "../../shared/components/FormElements/Button";
 import SurveyList from "../components/SurveyList";
 import ErrorModal from "../../shared/components/UIElement/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElement/LoadingSpinner";
 import { useFetch } from "../../shared/hooks/fetch-hook";
+import "../styles/Survey.css"
 
 const Survey = () => {
   const { isLoading, error, sendRequest, clearError } = useFetch();
@@ -31,9 +31,6 @@ const Survey = () => {
         </div>
       )}
       {!isLoading && loadedPost && <SurveyList items={loadedPost} />}
-      <div className="center">
-        <Button to="/post/new">새 글쓰기</Button>
-      </div>
     </React.Fragment>
   );
 };

@@ -7,14 +7,14 @@ import {
 } from "react-router-dom";
 
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
-import Home from "./survey/pages/Home";
-import Survey from "./survey/pages/Survey";
+import Home from "./main/pages/Home";
+import Survey from "./main/pages/Survey";
 import PostView from "./post/page/PostView";
 import NewPost from "./post/page/NewPost";
 import UpdatePost from "./post/page/UpdatePost";
-import Auth from "./survey/pages/Auth";
+import Auth from "./main/pages/Auth";
 import { AuthContext } from "./shared/context/auth-context";
-import ReqSurvey from "./survey/pages/ReqSurvey";
+import ReqSurvey from "./main/pages/ReqSurvey";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
