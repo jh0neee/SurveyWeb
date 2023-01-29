@@ -82,36 +82,34 @@ const PostItem = (props) => {
           {auth.isLoggedIn && <Button>설문등록</Button>}
         </div>
         <div className="post-view-wrapper">
-          <div className="post-view-row">
-            <label>제목</label>
-            <label>{props.title}</label>
+          <div className="post-view">
+            <div className="post-title">
+              <label>{props.title}</label>
+            </div>
+            <div className="post-info">
+                <label>작성자</label>
+                <p>{props.author}</p>
+                <label>작성일</label>
+                <p>{props.createDate}</p>
+            </div>
+            <div className="post-content">
+              <label>{props.content}</label>
+            </div>
           </div>
-          <div className="post-view-row">
-            <label>작성일</label>
-            <label>{props.createDate}</label>
-          </div>
-          <div className="post-view-row">
-            <label>작성자</label>
-            <label>{props.author}</label>
-          </div>
-          <div className="post-view-row post-content">
-            <label>내용</label>
-            <label>{props.content}</label>
-          </div>
-        </div>
-        <div className="post-view-btn">
-          <Button inverse onClick={openModalHandler}>
-            설문하기
-          </Button>
-          <Button>결과</Button>
-          {auth.userId === props.author && (
-            <Button to={`/${props.id}/update`}>수정하기</Button>
-          )}
-          {auth.userId === props.author && (
-            <Button danger onClick={showDeleteWarningHandler}>
-              삭제하기
+          <div className="post-btn-wrap">
+            <Button inverse to={'/post/survey'}>
+              설문하기
             </Button>
-          )}
+            <Button onClick={openModalHandler}>결과</Button>
+            {auth.userId === props.author && (
+              <Button to={`/${props.id}/update`}>수정하기</Button>
+            )}
+            {auth.userId === props.author && (
+              <Button danger onClick={showDeleteWarningHandler}>
+                삭제하기
+              </Button>
+            )}
+          </div>
         </div>
       </li>
     </React.Fragment>

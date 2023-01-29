@@ -1,48 +1,6 @@
-@import '../../reset.css';
-
-.post-view-wrapper {
-  width: 80%;
-  padding-top: 20px;
-  margin: 0 auto;
-}
-
-.post-top-view-btn {
-  display: flex;
-  justify-content: space-between;
-  border: 0;
-  padding: 10px;
-}
-
-.post-view-btn {
-  display: flex;
-  justify-content: center;
-  border: 0;
-  padding: 10px;
-}
-
-.post-view-row {
-  margin: 10px 0;
-  display: flex;
-}
-
 .post-survey {
-  height: 20rem;
+  padding: 1rem;
   width: 100%;
-}
-
-.post-content {
-  min-height: 270px;
-}
-
-.post-view-row > label:first-child {
-  margin: 10px 0;
-  width: 30%;
-  font-weight: bold;
-}
-
-.post-view-row > *:nth-child(2) {
-  margin: 10px 0;
-  width: 70%;
 }
 
 .post-item__modal-content {
@@ -56,4 +14,45 @@
 .post-item__actions button,
 .post-item__actions a {
   margin: 0.5rem;
+}
+
+.post-top-view-btn {
+  display: flex;
+  justify-content: space-between;
+  border: 0;
+  padding: 10px;
+}
+
+.post-view {
+  width: 100%;
+  border-top: 2px solid #000;
+}
+
+.post-title {
+  padding: 20px 15px;
+  border-bottom: 1px dashed #ddd;
+  font-size: 2rem;
+}
+
+.post-info {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+  border-bottom: 1px solid #999;
+  font-size: 0.9rem;
+}
+
+.post-content {
+  padding: 15px;
+  border-bottom: 1px solid #000;
+  line-height: 160%;
+  min-height: 20rem;
+}
+
+.post-btn-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  border: 0;
+  padding: 10px;
 }
