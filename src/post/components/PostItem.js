@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
+import dayjs from 'dayjs';
 
 import Button from "../../shared/components/FormElements/Button";
 import DropBox from "../../shared/components/FormElements/DropBox";
@@ -88,9 +89,9 @@ const PostItem = (props) => {
             </div>
             <div className="post-info">
                 <label>작성자</label>
-                <p>{props.author}</p>
+                <p>{props.author.name}</p>
                 <label>작성일</label>
-                <p>{props.createDate}</p>
+                <p>{dayjs(props.createDate).format("YYYY-MM-DD")}</p>
             </div>
             <div className="post-content">
               <label>{props.content}</label>
@@ -101,10 +102,10 @@ const PostItem = (props) => {
               설문하기
             </Button>
             <Button onClick={openModalHandler}>결과</Button>
-            {auth.userId === props.author && (
+            {auth.userId === props.author.id && (
               <Button to={`/${props.id}/update`}>수정하기</Button>
             )}
-            {auth.userId === props.author && (
+            {auth.userId === props.author.id && (
               <Button danger onClick={showDeleteWarningHandler}>
                 삭제하기
               </Button>

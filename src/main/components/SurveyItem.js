@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import dayjs from "dayjs";
 
 import "../styles/Survey.css";
 
@@ -9,8 +10,8 @@ const SurveyItem = (props) => {
       <td className="title">
         <Link to={`/${props.id}/content`}>{props.title}</Link>
       </td>
-      <td>{props.author}</td>
-      <td>{props.createDate}</td>
+      <td>{props.author.name}</td>
+      <td>{dayjs(props.createDate).format("YYYY-MM-DD")}</td>
     </tr>
   );
 };
