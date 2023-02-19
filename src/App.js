@@ -13,8 +13,10 @@ import PostView from "./post/page/PostView";
 import NewPost from "./post/page/NewPost";
 import UpdatePost from "./post/page/UpdatePost";
 import Auth from "./main/pages/Auth";
-import { AuthContext } from "./shared/context/auth-context";
 import ReqSurvey from "./main/pages/ReqSurvey";
+import Register from "./survey/pages/Register";
+import SurveyForm from "./survey/pages/SurveyForm";
+import { AuthContext } from "./shared/context/auth-context";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -52,6 +54,12 @@ const App = () => {
         <Route path="/:postId/update" exact>
           <UpdatePost />
         </Route>
+        <Route path="/:postId/register" exact>
+          <Register />
+        </Route>
+        <Route path="/:postId/survey" exact>
+          <SurveyForm />
+        </Route>
         <Redirect to="/" />
       </Switch>
     );
@@ -69,6 +77,9 @@ const App = () => {
         </Route>
         <Route path="/auth">
           <Auth />
+        </Route>
+        <Route path="/:postId/survey" exact>
+          <SurveyForm />
         </Route>
         <Redirect to="/auth" />
       </Switch>

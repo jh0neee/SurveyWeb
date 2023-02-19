@@ -1,9 +1,8 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
 import Button from "../../shared/components/FormElements/Button";
-import DropBox from "../../shared/components/FormElements/DropBox";
 import Modal from "../../shared/components/UIElement/Modal";
 import ErrorModal from "../../shared/components/UIElement/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElement/LoadingSpinner";
@@ -47,15 +46,11 @@ const PostItem = (props) => {
         contentClass="post-item__modal-content"
         footerClass="post-item__modal-actions"
         footer={
-          <React.Fragment>
-            <Button onClick={closeModalHandler}>닫기</Button>
-            <Button>제출</Button>
-          </React.Fragment>
+          <Button onClick={closeModalHandler}>닫기</Button>
         }
       >
         <div className="post-survey">
-          <DropBox />
-          <h2>설문내용</h2>
+          <h2>결과</h2>
         </div>
       </Modal>
       <Modal
@@ -80,7 +75,6 @@ const PostItem = (props) => {
         {isLoading && <LoadingSpinner asOverlay />}
         <div className="post-top-view-btn">
           <Button to="/survey"> ◀ 목록 </Button>
-          {auth.isLoggedIn && <Button>설문등록</Button>}
         </div>
         <div className="post-view-wrapper">
           <div className="post-view">
@@ -88,19 +82,25 @@ const PostItem = (props) => {
               <label>{props.title}</label>
             </div>
             <div className="post-info">
-                <label>작성자</label>
-                <p>{props.author.name}</p>
-                <label>작성일</label>
-                <p>{dayjs(props.createDate).format("YYYY-MM-DD")}</p>
+              <label>작성자</label>
+              <p>{props.author.name}</p>
+              <label>작성일</label>
+              <p>{dayjs(props.createDate).format("YYYY-MM-DD")}</p>
             </div>
             <div className="post-content">
               <label>{props.content}</label>
             </div>
           </div>
           <div className="post-btn-wrap">
-            <Button inverse to={'/post/survey'}>
-              설문하기
-            </Button>
+            {auth.userId === props.author.id ? (
+              <Button inverse to={`/${props.id}/register`}>
+                설문등록
+              </Button>
+            ) : (
+              <Button inverse to={`/${props.id}/survey`}>
+                설문하기
+              </Button>
+            )}
             <Button onClick={openModalHandler}>결과</Button>
             {auth.userId === props.author.id && (
               <Button to={`/${props.id}/update`}>수정하기</Button>
