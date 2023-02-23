@@ -2,7 +2,13 @@ import React, { useState } from "react";
 
 import "./Dropdown.css";
 
-const Dropdown = ({ selectedOpt, setSelectedOpt, options }) => {
+const options = [
+  { id: 1, item: "객관식" },
+  { id: 2, item: "주관식" },
+  { id: 3, item: "체크박스" },
+];
+
+const Dropdown = ({ selectedOpt, setSelectedOpt }) => {
   const [isActive, setIsActive] = useState(false);
 
   const handleDropDown = () => {
@@ -17,7 +23,7 @@ const Dropdown = ({ selectedOpt, setSelectedOpt, options }) => {
       </div>
       {isActive && (
         <div className="dropdown">
-          {options.map((option) => 
+          {options.map((option) => (
             <div
               key={option.id}
               onClick={() => {
@@ -28,7 +34,7 @@ const Dropdown = ({ selectedOpt, setSelectedOpt, options }) => {
             >
               {option.item}
             </div>
-          )}
+          ))}
         </div>
       )}
     </div>
