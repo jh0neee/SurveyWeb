@@ -1,0 +1,14 @@
+.check-option {
+  margin: 30px auto 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.check-item {
+  padding: 10px 10px 0 0;
+}
+
+.check-option span,
+span {
+  cursor: pointer;
+}
