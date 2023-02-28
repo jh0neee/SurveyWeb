@@ -1,0 +1,28 @@
+.survey_card {
+  width: 25rem;
+  margin: 1rem auto;
+}
+
+.survey {
+  padding: 1rem;
+}
+
+.text-input{
+  width: 20rem;
+  display: flex;
+  margin: 30px 0 0;
+}
+
+.check-box {
+  border: 1px dotted black;
+  padding: 5px;
+  margin: 30px 0 0;
+}
+.check-options {
+  display: flex;
+  padding: 5px 5px;
+}
+
+.survey_button{
+  margin: 3rem 0 5rem;
+}
