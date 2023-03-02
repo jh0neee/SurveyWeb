@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
 import Button from "../../shared/components/FormElements/Button";
@@ -12,8 +12,10 @@ import {
 import { useFetch } from "../../shared/hooks/fetch-hook";
 import { useForm } from "../../shared/hooks/form-hook";
 import "../styles/PostForm.css";
+import { AuthContext } from "../../shared/context/auth-context";
 
 const UpdatePost = () => {
+  const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useFetch();
   const [loadedPost, setLoadedPost] = useState();
   const postId = useParams().postId;
@@ -76,6 +78,7 @@ const UpdatePost = () => {
         }),
         {
           "Content-Type": "application/json",
+          Authorization: "Bearer " + auth.token
         }
       );
       history.push(`/${postId}/content`);

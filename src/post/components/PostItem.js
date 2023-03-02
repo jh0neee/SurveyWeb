@@ -28,7 +28,9 @@ const PostItem = (props) => {
     try {
       await sendRequest(
         `http://localhost:5000/api/posts/${props.id}`,
-        "DELETE"
+        "DELETE",
+        null,
+        { Authorization: "Bearer " + auth.token }
       );
       props.onDelete(props.id);
 
@@ -45,9 +47,7 @@ const PostItem = (props) => {
         header={props.title}
         contentClass="post-item__modal-content"
         footerClass="post-item__modal-actions"
-        footer={
-          <Button onClick={closeModalHandler}>닫기</Button>
-        }
+        footer={<Button onClick={closeModalHandler}>닫기</Button>}
       >
         <div className="post-survey">
           <h2>결과</h2>

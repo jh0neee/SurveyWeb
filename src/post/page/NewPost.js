@@ -34,7 +34,6 @@ const NewPost = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
     try {
       await sendRequest(
         "http://localhost:5000/api/posts",
@@ -44,9 +43,11 @@ const NewPost = () => {
           author: auth.userId,
           content: formState.inputs.content.value,
         }),
-        { "Content-Type": "application/json" }
+        {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + auth.token
+        }
       );
-
       history.push("/survey");
     } catch (err) {}
   };
