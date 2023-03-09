@@ -10,23 +10,37 @@ import "../styles/Register.css";
 const Register = () => {
   const [selectedOpt, setSelectedOpt] = useState("");
   const [array, setArray] = useState([]); // 질문 value
-  const surveyId = useRef(0); // 질문 객체 Id. 추후 변경
+  const [checkbox, setCheckBox] = useState([]); // 체크박스 옵션
+  const shortAnswerTypeId = useRef(0); // 단답형 질문 객체 Id
+  const subjectiveTypeId = useRef(0); // 주관형 질문 객체 Id
 
   const singleQuestion = {
     // 객관식 주관형 질문 객체
-    id: surveyId.current,
+    id: "s" + subjectiveTypeId.current,
     selectedOpt,
     question: "",
   };
 
   const checkQuestion = {
     // 체크박스 질문 객체
-    id: surveyId.current,
+    id: "c" + shortAnswerTypeId.current,
     selectedOpt,
     question: "",
+    option: [],
   };
 
-  // checkedList 배열에 옵션추가 누르면 배열에 객체 추가되게
+  const addListHandler = () => {
+    if (selectedOpt === "체크박스") {
+      // 추가로 checkbox에 배열을 넣는다
+      setArray([...array, checkQuestion]);
+      shortAnswerTypeId.current += 1;
+    } else if (selectedOpt === "") {
+      setArray([...array]);
+    } else {
+      setArray([...array, singleQuestion]);
+      subjectiveTypeId.current += 1;
+    }
+  };
 
   const onChangeInput = (e, index) => {
     if (array !== undefined) {
@@ -37,23 +51,11 @@ const Register = () => {
     }
   };
 
-  const addListHandler = () => {
-    if (selectedOpt === "체크박스") {
-      setArray([...array, checkQuestion]);
-      surveyId.current += 1;
-      // 추가로 checkbox에 객체를 넣는다
-    } else if (selectedOpt === "") {
-      setArray([...array]);
-    } else {
-      setArray([...array, singleQuestion]);
-      surveyId.current += 1;
-    }
-  };
-
   const surveySubmitHandler = (e) => {
     e.preventDefault();
+
     console.log(array);
-    // submit 버튼 누르면 배열에 작은 input카드들이 등록되는..?
+    console.log(checkbox);
   };
 
   return (
@@ -71,9 +73,7 @@ const Register = () => {
                   <div className="delete">
                     <span
                       onClick={() => {
-                        setArray(
-                          array.filter((card) => card.id !== item.id)
-                        );
+                        setArray(array.filter((card) => card.id !== item.id));
                       }}
                     >
                       ⛔
@@ -86,7 +86,11 @@ const Register = () => {
                         value={item.question}
                         onChange={(e) => onChangeInput(e, index)}
                       />
-                      <Check />
+                      <Check
+                        checkQuestionId={item.id}
+                        checkbox={checkbox}
+                        setCheckBox={setCheckBox}
+                      />
                     </div>
                   ) : (
                     <input

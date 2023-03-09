@@ -12,3 +12,7 @@
 span {
   cursor: pointer;
 }
+
+.add-option {
+  margin: 0.9rem 2.7rem;
+}

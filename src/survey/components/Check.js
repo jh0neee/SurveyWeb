@@ -1,49 +1,62 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 
 import "../styles/Check.css";
 
-const Check = () => {
-  const checkId = useRef(1); // 추후 변경
-  //const [checkOption, setcheckOption] = useState([]) //배열 안에 추가 버튼을 눌렀을 때 check 객체가 새롭게 추가된다
-  const [check, setCheck] = useState([{ id: 0, value: "옵션 입력해주세요" }]); // 배열말고 애초부터 객체로 구성한다면?
+const Check = (props) => {
+  const { checkQuestionId, checkbox, setCheckBox } = props;
+  const checkId = useRef(1); // check option Id
 
-  const onChangeCheck = (e, index) => {
-    if (check !== undefined) {
-      let new_checkArray = [...check];
-      new_checkArray[index].value = e.target.value;
-      setCheck(new_checkArray);
-    }
-  };
+  const onChangeCheck = (e, index) => {};
 
-  const onClickCheck = () => {
+  const onClickCheck = (id) => {
+    // 옵션 추가 누르면 checkQuestion의 option에 데이터 추가
     const option = {
       id: checkId.current,
       value: "",
     };
-    setCheck([...check, option]);
     checkId.current += 1;
+    const a = checkbox.filter((opt) => opt.id === checkQuestionId);
+    if (a.length !== 0) {
+      const new_ChkOpt = a[0][id].concat(option);
+      a[0][id] = new_ChkOpt;
+      setCheckBox([...checkbox]);
+    } else {
+      setCheckBox([...checkbox, { id: checkQuestionId, [id]: [option] }]);
+    }
   };
 
   return (
     <React.Fragment>
       <div className="check-option">
-        {check.map((item, index) => (
-          <div key={item.id} className="check-item">
-            <input
-              value={item.value}
-              onChange={(e) => onChangeCheck(e, index)}
-            />
-            <span
-              onClick={() => {
-                setCheck(check.filter((option) => option.id !== item.id));
-              }}
-            >
-              ❌
-            </span>
-          </div>
-        ))}
+        {checkbox.map((elem) =>
+          elem.id === checkQuestionId
+            ? elem[checkQuestionId].map((item, index) => (
+                <div key={item.id} className="check-item">
+                  <input
+                    value={item.value}
+                    placeholder="옵션 입력해주세요"
+                    onChange={(e) => onChangeCheck(e, index)}
+                  />
+                  <span
+                    onClick={() => {
+                      setCheckBox(
+                        checkbox.filter((option) => option.id !== item.id)
+                      );
+                    }}
+                  >
+                    ❌
+                  </span>
+                </div>
+              ))
+            : null
+        )}
       </div>
-      <span onClick={onClickCheck}>옵션추가</span>
+      <span
+        className="add-option"
+        onClick={() => onClickCheck(checkQuestionId)}
+      >
+        옵션추가
+      </span>
     </React.Fragment>
   );
 };
