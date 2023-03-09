@@ -3,32 +3,33 @@ import React, { useRef } from "react";
 import "../styles/Check.css";
 
 const Check = (props) => {
-  const { checkQuestionId, checkbox, setCheckBox } = props;
-  const checkId = useRef(1); // check option Id
+  const { checkQuestionId, checkOpt, setCheckOpt } = props;
+  const checkOptId = useRef(1); // check option Id
 
   const onChangeCheck = (e, index) => {};
 
   const onClickCheck = (id) => {
-    // 옵션 추가 누르면 checkQuestion의 option에 데이터 추가
     const option = {
-      id: checkId.current,
+      id: checkOptId.current,
       value: "",
     };
-    checkId.current += 1;
-    const a = checkbox.filter((opt) => opt.id === checkQuestionId);
-    if (a.length !== 0) {
-      const new_ChkOpt = a[0][id].concat(option);
-      a[0][id] = new_ChkOpt;
-      setCheckBox([...checkbox]);
+    checkOptId.current += 1;
+
+    // 옵션 추가 누르면 해당하는 CheckOpt의 [checkQuestionId]에 데이터 추가
+    const checkOptArray = checkOpt.filter((opt) => opt.id === checkQuestionId);
+    if (checkOptArray.length !== 0) {
+      const new_ChkOpt = checkOptArray[0][id].concat(option);
+      checkOptArray[0][id] = new_ChkOpt;
+      setCheckOpt([...checkOpt]);
     } else {
-      setCheckBox([...checkbox, { id: checkQuestionId, [id]: [option] }]);
+      setCheckOpt([...checkOpt, { id: checkQuestionId, [id]: [option] }]);
     }
   };
 
   return (
     <React.Fragment>
       <div className="check-option">
-        {checkbox.map((elem) =>
+        {checkOpt.map((elem) =>
           elem.id === checkQuestionId
             ? elem[checkQuestionId].map((item, index) => (
                 <div key={item.id} className="check-item">
@@ -39,8 +40,8 @@ const Check = (props) => {
                   />
                   <span
                     onClick={() => {
-                      setCheckBox(
-                        checkbox.filter((option) => option.id !== item.id)
+                      setCheckOpt(
+                        checkOpt.filter((option) => option.id !== item.id)
                       );
                     }}
                   >

@@ -20,7 +20,7 @@
   margin: 0 auto;
 }
 
-.postttt {
+.survey-form {
   margin: 10px auto;
   padding: 1rem;
   width: 60%;
@@ -39,13 +39,13 @@
   display: none;
 } */
 
-.tableeee {
+.mid_survey-form {
   /* 중앙정렬 */
   display: flex;
   justify-content: center;
 }
 
-.cardddd {
+.input-card {
   /* 카드 */
   width: 37rem;
   /* padding: 50px 0; */
@@ -53,25 +53,25 @@
 }
 
 /* 스크롤바 커스텀 */
-.postttt::-webkit-scrollbar {
+.survey-form::-webkit-scrollbar {
   width: 5px;
 }
 
-.postttt::-webkit-scrollbar-track {
+.survey-form::-webkit-scrollbar-track {
   background-color: #e4e4e4;
   border-radius: 100px;
 }
 
-.postttt::-webkit-scrollbar-thumb {
+.survey-form::-webkit-scrollbar-thumb {
   background-color: #d4aa70;
   border-radius: 100px;
 }
 
-.postttt {
+.survey-form {
   scrollbar-color: #D4AA70 #e4e4e4;
 }
 
-.postttt::-webkit-scrollbar-thumb {
+.survey-form::-webkit-scrollbar-thumb {
   background-image: linear-gradient(180deg, #ff0055 0%, #00A4FA 99%);
   box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
   border-radius: 100px;
