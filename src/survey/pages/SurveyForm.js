@@ -5,19 +5,19 @@ import "../styles/SurveyForm.css";
 
 const DEMO_SURVEY = [
   {
-    id: 1,
+    id: "s1",
     selectedOpt: "객관식",
     question: "이름이 무엇인가요?",
     answer: "",
   },
   {
-    id: 2,
+    id: "s2",
     selectedOpt: "주관식",
     question: "오늘 무엇을 먹었나요?",
     answer: "",
   },
   {
-    id: 3,
+    id: "c1",
     selectedOpt: "체크박스",
     question: "오늘 해야할 일을 선택해주세요",
     option: [
@@ -27,13 +27,13 @@ const DEMO_SURVEY = [
     ],
   },
   {
-    id: 4,
+    id: "s3",
     selectedOpt: "주관식",
     question: "오늘 해야할 일을 잘 끝냈나요?",
     answer: "",
   },
   {
-    id: 5,
+    id: "c2",
     selectedOpt: "체크박스",
     question: "저녁 메뉴로 무엇을 먹고싶은가요?",
     option: [
@@ -46,7 +46,7 @@ const DEMO_SURVEY = [
     ],
   },
   {
-    id: 6,
+    id: "s4",
     selectedOpt: "객관식",
     question: "답변을 성실히 끝냈나요?",
     answer: "",

@@ -44,14 +44,14 @@ const SurveyFormList = (props) => {
     <>
       <form onSubmit={onSubmit}>
         {props.items.map((survey) => (
-          <Card className="survey_card" key={survey.id}>
+          <Card className="survey_card" key={`survey-answer-${survey.id}`}>
             <div className="survey">
               {survey.selectedOpt === "체크박스" ? (
                 <>
                   <b>Q. {survey.question}</b>
                   <div className="check-box">
                     {survey.option.map((list) => (
-                      <div key={list.id} className="check-options">
+                      <div key={`check-option-${list.id}`} className="check-options">
                         <input
                           id={survey.id}
                           type="checkbox"

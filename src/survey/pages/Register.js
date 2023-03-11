@@ -78,7 +78,7 @@ const Register = () => {
         <form onSubmit={surveySubmitHandler}>
           <div className="survey-form">
             {questionItem.map((item, index) => (
-              <div key={item.id} className="mid_survey-form">
+              <div key={`survey-question-${item.id}`} className="mid_survey-form">
                 <Card className="input-card">
                   <div className="delete-btn">
                     <span

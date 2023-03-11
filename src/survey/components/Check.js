@@ -47,7 +47,7 @@ const Check = (props) => {
         {checkOpt.map((elem) =>
           elem.id === checkQuestionId
             ? elem[checkQuestionId].map((item, index) => (
-                <div key={item.id} className="check-item">
+                <div key={`check-item-${item.id}`} className="check-item">
                   <input
                     value={item.value}
                     placeholder="옵션 입력해주세요"
