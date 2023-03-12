@@ -38,6 +38,10 @@ a {
   line-height: 24px;
 }
 
+.table-wrap {
+  min-height: 331.48px;
+}
+
 .table-header {
   border-bottom: 1px solid #999;
   font-weight: 600;
