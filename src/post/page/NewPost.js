@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Button from "../../shared/components/FormElements/Button";
 import Input from "../../shared/components/FormElements/Input";
@@ -16,7 +16,7 @@ import "../styles/PostForm.css";
 
 const NewPost = () => {
   const auth = useContext(AuthContext);
-  const history = useHistory();
+  const navigate = useNavigate();
   const { isLoading, error, sendRequest, clearError } = useFetch();
   const [formState, inputHandler] = useForm(
     {
@@ -48,7 +48,7 @@ const NewPost = () => {
           Authorization: "Bearer " + auth.token
         }
       );
-      history.push("/survey");
+      navigate("/survey");
     } catch (err) {}
   };
 

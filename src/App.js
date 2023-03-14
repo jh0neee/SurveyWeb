@@ -1,9 +1,9 @@
 import React from "react";
 import {
   BrowserRouter as Router,
+  Navigate,
   Route,
-  Redirect,
-  Switch,
+  Routes,
 } from "react-router-dom";
 
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
@@ -26,54 +26,28 @@ const App = () => {
 
   if (token) {
     routes = (
-      <Switch>
-        <Route path="/" exact>
-          <Home />
-        </Route>
-        <Route path="/survey" exact>
-          <Survey />
-        </Route>
-        <Route path="/survey/request" exact>
-          <ReqSurvey />
-        </Route>
-        <Route path="/:postId/content" exact>
-          <PostView />
-        </Route>
-        <Route path="/post/new" exact>
-          <NewPost />
-        </Route>
-        <Route path="/:postId/update" exact>
-          <UpdatePost />
-        </Route>
-        <Route path="/:postId/register" exact>
-          <Register />
-        </Route>
-        <Route path="/:postId/survey" exact>
-          <SurveyForm />
-        </Route>
-        <Redirect to="/" />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/survey/*" element={<Survey />} />
+        <Route path="/request" element={<ReqSurvey />} />
+        <Route path="/:postId/content" element={<PostView />} />
+        <Route path="/post/new" element={<NewPost />} />
+        <Route path="/:postId/update" element={<UpdatePost />} />
+        <Route path="/:postId/register" element={<Register />} />
+        <Route path="/:postId/survey" element={<SurveyForm />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     );
   } else {
     routes = (
-      <Switch>
-        <Route path="/" exact>
-          <Home />
-        </Route>
-        <Route path="/survey" exact>
-          <Survey />
-        </Route>
-        <Route path="/:postId/content" exact>
-          <PostView />
-        </Route>
-        <Route path="/auth">
-          <Auth />
-        </Route>
-        <Route path="/:postId/survey" exact>
-          <SurveyForm />
-        </Route>
-        <Redirect to="/auth" />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/survey/*" element={<Survey />} />
+        <Route path="/:postId/content" element={<PostView />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/:postId/survey" element={<SurveyForm />} />
+        <Route path="*" element={<Navigate to="/auth" />} />
+      </Routes>
     );
   }
 

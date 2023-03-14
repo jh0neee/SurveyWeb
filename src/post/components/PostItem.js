@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 
 import Button from "../../shared/components/FormElements/Button";
@@ -13,7 +13,7 @@ import "../styles/PostItem.css";
 const PostItem = (props) => {
   const { isLoading, error, sendRequest, clearError } = useFetch();
   const auth = useContext(AuthContext);
-  const history = useHistory();
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
@@ -34,7 +34,7 @@ const PostItem = (props) => {
       );
       props.onDelete(props.id);
 
-      history.push("/survey");
+      navigate("/survey");
     } catch (err) {}
   };
 

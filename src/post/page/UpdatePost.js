@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import Button from "../../shared/components/FormElements/Button";
 import Input from "../../shared/components/FormElements/Input";
@@ -19,7 +19,7 @@ const UpdatePost = () => {
   const { isLoading, error, sendRequest, clearError } = useFetch();
   const [loadedPost, setLoadedPost] = useState();
   const postId = useParams().postId;
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -81,7 +81,7 @@ const UpdatePost = () => {
           Authorization: "Bearer " + auth.token
         }
       );
-      history.push(`/${postId}/content`);
+      navigate(`/${postId}/content`);
     } catch (err) {}
   };
 
