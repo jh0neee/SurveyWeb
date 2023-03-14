@@ -54,7 +54,7 @@ const Register = () => {
     e.preventDefault();
     
     // checkOpt option 배열을 checkQuestion 객체에 추가
-    checkOpt.map(elem => {
+    checkOpt.forEach(elem => {
       // checkOpt id와 동일한 id의 questionItem 객체 index를 찾는다.
       let findIndex = questionItem.findIndex(item => item.id === elem.id);
       // 기존 배열 복사
