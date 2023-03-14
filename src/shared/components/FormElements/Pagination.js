@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 
 const Container = styled.div`
   display: flex;
   align-items: center;
+  margin: 3rem 0 0 10rem;
 `;
 
 const Button = styled.button`
@@ -58,8 +59,6 @@ const Pagination = ({ data, currPage, setCurrPage }) => {
     }
     return resultPages;
   };
-
-  console.log(getPageNumbers(data));
 
   const maxPage = getPageNumbers(data).length; // 마지막 페이지
   const prevFirstPage = blockNum * 5; // 이전 pageBlock 마지막 페이지
