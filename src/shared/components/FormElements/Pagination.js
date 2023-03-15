@@ -5,7 +5,8 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 const Container = styled.div`
   display: flex;
   align-items: center;
-  margin: 3rem 0 0 10rem;
+  justify-content: center;
+  padding-top: 3rem; 
 `;
 
 const Button = styled.button`
@@ -54,7 +55,7 @@ const Pagination = ({ data, currPage, setCurrPage }) => {
   const getPageNumbers = (data) => { // 페이지 개수
     const resultPages = [];
 
-    for (let i = 1; i <= Math.ceil(data?.length / 5); i++) { // 게시물 수를 5개씩 나누어 1페이지를 설정.
+    for (let i = 1; i <= Math.ceil(data?.total / 5); i++) { // 게시물 수를 5개씩 나누어 1페이지를 설정.
       resultPages.push(i);
     }
     return resultPages;
