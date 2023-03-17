@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import MainHeader from "./MainHeader";
 import NavLinks from "./NavLinks";
 import SideDrawer from "./SideDrawer";
-import CloseIcon from "../../../asset/image/close.svg";
 import "./MainNavigation.css";
 import Backdrop from "../UIElement/Backdrop";
 
 const MainNavigation = (props) => {
+  const CloseIcon = `${process.env.PUBLIC_URL}/image/close.svg`
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
 
   const openDrawer = () => {
