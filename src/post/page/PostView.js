@@ -7,6 +7,7 @@ import LoadingSpinner from "../../shared/components/UIElement/LoadingSpinner";
 import { useFetch } from "../../shared/hooks/fetch-hook";
 
 const PostView = () => {
+  const { REACT_APP_URL } = process.env;
   const { isLoading, error, sendRequest, clearError } = useFetch();
   const [loadedContents, setloadedContents] = useState();
 
@@ -16,7 +17,7 @@ const PostView = () => {
     const fetchPosts = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/posts/${postId}/content`
+          REACT_APP_URL + `/posts/${postId}/content`
         );
 
         const responseContent = responseData.post.filter((item) => {
@@ -35,7 +36,7 @@ const PostView = () => {
       prev.filter((post) => post.id !== deletedPostId)
     );
   };
-  
+
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
@@ -44,7 +45,9 @@ const PostView = () => {
           <LoadingSpinner />
         </div>
       )}
-      {!isLoading && loadedContents && <PostList items={loadedContents} onDeletePost={postDeletedHandler} />}
+      {!isLoading && loadedContents && (
+        <PostList items={loadedContents} onDeletePost={postDeletedHandler} />
+      )}
     </React.Fragment>
   );
 };

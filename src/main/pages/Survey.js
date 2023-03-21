@@ -7,6 +7,7 @@ import { useFetch } from "../../shared/hooks/fetch-hook";
 import "../styles/Survey.css";
 
 const Survey = () => {
+  const { REACT_APP_URL } = process.env;
   const { isLoading, error, sendRequest, clearError } = useFetch();
   const [loadedPost, setLoadedPost] = useState();
 
@@ -17,7 +18,7 @@ const Survey = () => {
     const fetchPosts = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/posts?offset=${start}&limit=5`
+          REACT_APP_URL + `/posts?offset=${start}&limit=5`
         );
         setStart((currPage - 1) * 5); // 페이지가 바뀔 때마다 post idx을 새롭게 불러온다.
         setLoadedPost(responseData);

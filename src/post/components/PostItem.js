@@ -11,6 +11,7 @@ import { useFetch } from "../../shared/hooks/fetch-hook";
 import "../styles/PostItem.css";
 
 const PostItem = (props) => {
+  const { REACT_APP_URL } = process.env;
   const { isLoading, error, sendRequest, clearError } = useFetch();
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
@@ -26,12 +27,9 @@ const PostItem = (props) => {
   const confirmDeleteHandler = async () => {
     setShowConfirmModal(false);
     try {
-      await sendRequest(
-        `http://localhost:5000/api/posts/${props.id}`,
-        "DELETE",
-        null,
-        { Authorization: "Bearer " + auth.token }
-      );
+      await sendRequest(REACT_APP_URL + `/posts/${props.id}`, "DELETE", null, {
+        Authorization: "Bearer " + auth.token,
+      });
       props.onDelete(props.id);
 
       navigate("/survey");

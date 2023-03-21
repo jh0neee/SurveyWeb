@@ -15,6 +15,7 @@ import { AuthContext } from "../../shared/context/auth-context";
 import "../styles/PostForm.css";
 
 const NewPost = () => {
+  const { REACT_APP_URL } = process.env;
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
   const { isLoading, error, sendRequest, clearError } = useFetch();
@@ -36,7 +37,7 @@ const NewPost = () => {
     e.preventDefault();
     try {
       await sendRequest(
-        "http://localhost:5000/api/posts",
+        REACT_APP_URL + "/posts",
         "POST",
         JSON.stringify({
           title: formState.inputs.title.value,
@@ -45,7 +46,7 @@ const NewPost = () => {
         }),
         {
           "Content-Type": "application/json",
-          Authorization: "Bearer " + auth.token
+          Authorization: "Bearer " + auth.token,
         }
       );
       navigate("/survey");

@@ -15,6 +15,7 @@ import "../styles/PostForm.css";
 import { AuthContext } from "../../shared/context/auth-context";
 
 const UpdatePost = () => {
+  const { REACT_APP_URL } = process.env;
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useFetch();
   const [loadedPost, setLoadedPost] = useState();
@@ -39,7 +40,7 @@ const UpdatePost = () => {
     const fetchPosts = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/posts/${postId}/content`
+          REACT_APP_URL + `/posts/${postId}/content`
         );
 
         const contentById = responseData.post.find(
@@ -70,7 +71,7 @@ const UpdatePost = () => {
     e.preventDefault();
     try {
       await sendRequest(
-        `http://localhost:5000/api/posts/${postId}`,
+        REACT_APP_URL + `/posts/${postId}`,
         "PATCH",
         JSON.stringify({
           title: formState.inputs.title.value,
@@ -78,7 +79,7 @@ const UpdatePost = () => {
         }),
         {
           "Content-Type": "application/json",
-          Authorization: "Bearer " + auth.token
+          Authorization: "Bearer " + auth.token,
         }
       );
       navigate(`/${postId}/content`);

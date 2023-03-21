@@ -16,6 +16,7 @@ import { AuthContext } from "../../shared/context/auth-context";
 import "../styles/Auth.css";
 
 const Auth = () => {
+  const { REACT_APP_URL } = process.env;
   const auth = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
   const { isLoading, error, sendRequest, clearError } = useFetch();
@@ -39,7 +40,7 @@ const Auth = () => {
       setFormData(
         {
           ...formState.inputs,
-          name: undefined
+          name: undefined,
         },
         formState.inputs.email.isValid && formState.inputs.password.isValid
       );
@@ -48,9 +49,9 @@ const Auth = () => {
         {
           ...formState.inputs,
           name: {
-            value: '',
-            isValid: false
-          }
+            value: "",
+            isValid: false,
+          },
         },
         false
       );
@@ -64,7 +65,7 @@ const Auth = () => {
     if (isLoginMode) {
       try {
         const responseData = await sendRequest(
-          "http://localhost:5000/api/user/login",
+          REACT_APP_URL + "/user/login",
           "POST",
           JSON.stringify({
             email: formState.inputs.email.value,
@@ -79,7 +80,7 @@ const Auth = () => {
     } else {
       try {
         const responseData = await sendRequest(
-          "http://localhost:5000/api/user/signup",
+          REACT_APP_URL + "/user/signup",
           "POST",
           JSON.stringify({
             name: formState.inputs.name.value,
