@@ -20,14 +20,11 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   background: #fff;
-`;
 
-const Content = styled.div`
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @media screen and (max-width: 1024px) {
+    padding: 20px;
+    justify-content: center;
+  }
 `;
 
 const Circle = styled.div`
@@ -38,12 +35,24 @@ const Circle = styled.div`
   height: 100%;
   background: #00a4fa;
   clip-path: circle(600px at right 700px);
+
+  @media screen and (max-width: 1024px) {
+    clip-path: circle(600px at center 980px);
+  }
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 const CheckImg = styled.img`
   position: absolute;
   bottom: 265px;
   right: 140px;
+
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 const MainImg = styled.img`
@@ -52,12 +61,27 @@ const MainImg = styled.img`
   height: 250px;
   bottom: 35px;
   right: 135px;
+
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 const TextBox = styled.div`
   position: relative;
   top: 50px;
   max-width: 600px;
+
+  @media screen and (max-width: 1024px) {
+    top: -110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 600px) {
+    top: 30px;
+  }
 `;
 
 const Description = styled.h2`
@@ -65,6 +89,12 @@ const Description = styled.h2`
   font-size: 4em;
   line-height: 1.4em;
   font-weight: 500;
+
+  @media screen and (max-width: 600px) {
+    background: #00a4fa;
+    padding: 40px;
+    border-radius: 80px;
+  }
 `;
 
 const PrimaryDesc = styled.span`
@@ -75,6 +105,13 @@ const PrimaryDesc = styled.span`
 
 const Explanation = styled.p`
   color: #333;
+
+  @media screen and (max-width: 1024px) {
+    text-align: center;
+  }
+  @media screen and (max-width: 600px) {
+    margin: 50px;
+  }
 `;
 
 const GotoBtn = styled.button`
@@ -87,6 +124,10 @@ const GotoBtn = styled.button`
   font-weight: 500;
   letter-spacing: 1px;
   text-decoration: none;
+
+  @media screen and (max-width: 600px) {
+    margin-top: 40px;
+  }
 `;
 
 const Thumb = styled.ul`
@@ -98,6 +139,22 @@ const Thumb = styled.ul`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  @media screen and (max-width: 1024px) {
+    flex-direction: row;
+    left: 28rem;
+    top: 29rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+`;
+
+const ThumbText = styled.p`
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 const ThumbLine = styled.li`
@@ -107,14 +164,23 @@ const ThumbLine = styled.li`
   cursor: pointer;
   transition: 0.5s;
 
-  &:hover  {
+  &:hover {
     transform: translateY(-15px);
+  }
+
+  @media screen and (max-width: 1024px) {
+    margin: 0 20px;
   }
 `;
 
 const ThumbImg = styled.img`
   width: 50px;
   height: 50px;
+
+  @media screen and (max-width: 1024px) {
+    width: 150px;
+    height: 150px;
+  }
 `;
 
 const Home = () => {
@@ -134,22 +200,26 @@ const Home = () => {
           />
           <MainImg src={imgSrc || happy} alt="happy" />
         </Circle>
-        <Content>
-          <TextBox>
-            <Description>
-              Do it Now,
-              <br />
-              <PrimaryDesc>Survey!</PrimaryDesc>
-            </Description>
-            <Explanation>
-              설문을 작성해보세요, 개인과 기업의 리서치를 모아드립니다.
-              <br /> 직관적인 결과를 바로 확인해보실 수 있습니다.
-            </Explanation>
-            <GotoBtn>설문하러가기</GotoBtn>
-          </TextBox>
-        </Content>
+        <TextBox>
+          <Description>
+            Do it Now,
+            <br />
+            <PrimaryDesc>Survey!</PrimaryDesc>
+          </Description>
+          <Explanation>
+            설문을 작성해보세요,
+            <br />
+            개인과 기업의 리서치를 모아드립니다.
+            <br />
+            설문을 응답해보세요,
+            <br />
+            각자의 응답이 모여 더 개선된 환경을 만들어 낼 수 있습니다!
+            <br /> 직관적인 결과를 바로 확인해보실 수 있습니다.
+          </Explanation>
+          <GotoBtn>설문하러가기</GotoBtn>
+        </TextBox>
         <Thumb>
-          <p>Click Here!</p>
+          <ThumbText>Click Here!</ThumbText>
           <ThumbLine>
             <ThumbImg
               src={happy}
