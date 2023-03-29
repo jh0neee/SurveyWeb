@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -46,11 +46,44 @@ const Circle = styled.div`
 `;
 
 const CheckImg = styled.img`
-  position: absolute;
-  bottom: 265px;
-  right: 140px;
+  ${(props) =>
+    props.medium &&
+    css`
+      position: absolute;
+      width: 70px;
+      height: 50px;
+      bottom: 11rem;
+      right: 13rem;
+    `}
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (min-width: 1024px) {
+    position: absolute;
+    bottom: 334px;
+    right: 205px;
+    ${(props) =>
+      props.medium &&
+      css`
+        display: none;
+      `}
+  }
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+`;
+
+const CheckBox = styled.img`
+  position: absolute;
+  width: 41px;
+  height: 37px;
+  bottom: 11.1rem;
+  right: ${(props) => props.right};
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+
+  @media screen and (max-width: 600px) {
     display: none;
   }
 `;
@@ -86,8 +119,9 @@ const TextBox = styled.div`
 
 const Description = styled.h2`
   color: #333;
+  padding-bottom: 2rem;
   font-size: 4em;
-  line-height: 1.4em;
+  line-height: 0.9em;
   font-weight: 500;
 
   @media screen and (max-width: 600px) {
@@ -105,24 +139,28 @@ const PrimaryDesc = styled.span`
 
 const Explanation = styled.p`
   color: #333;
+  padding: 0 0 10px 0;
 
   @media screen and (max-width: 1024px) {
     text-align: center;
   }
   @media screen and (max-width: 600px) {
-    margin: 50px;
+    margin: 50px 0 25px 0;
   }
 `;
 
 const GotoBtn = styled.button`
   display: inline-block;
   margin-top: 20px;
-  padding: 8px 20px;
+  padding: 4px 20px;
   background: #00a4fa;
   color: #fff;
+  border: none;
   border-radius: 40px;
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: 1px;
+  cursor: pointer;
   text-decoration: none;
 
   @media screen and (max-width: 600px) {
@@ -142,8 +180,8 @@ const Thumb = styled.ul`
 
   @media screen and (max-width: 1024px) {
     flex-direction: row;
-    left: 28rem;
-    top: 29rem;
+    left: 50%;
+    top: 31rem;
   }
 
   @media screen and (max-width: 600px) {
@@ -169,7 +207,7 @@ const ThumbLine = styled.li`
   }
 
   @media screen and (max-width: 1024px) {
-    margin: 0 20px;
+    margin: 0 30px;
   }
 `;
 
@@ -221,6 +259,11 @@ const Home = () => {
         <Thumb>
           <ThumbText>Click Here!</ThumbText>
           <ThumbLine>
+            <CheckBox
+              right={"27rem"}
+              src={`${process.env.PUBLIC_URL}/image/checkbox.png`}
+              alt="check_box"
+            />
             <ThumbImg
               src={happy}
               alt="happy"
@@ -228,6 +271,11 @@ const Home = () => {
             />
           </ThumbLine>
           <ThumbLine>
+            <CheckImg
+              medium={true}
+              src={`${process.env.PUBLIC_URL}/image/Check.png`}
+              alt="check_img"
+            />
             <ThumbImg
               src={nervous}
               alt="nervous"
@@ -235,6 +283,11 @@ const Home = () => {
             />
           </ThumbLine>
           <ThumbLine>
+            <CheckBox
+              right={"1.5rem"}
+              src={`${process.env.PUBLIC_URL}/image/checkbox.png`}
+              alt="check_box"
+            />
             <ThumbImg
               src={surprised}
               alt="surprise"
