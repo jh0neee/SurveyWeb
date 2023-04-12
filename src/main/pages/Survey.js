@@ -25,7 +25,7 @@ const Survey = () => {
       } catch (err) {}
     };
     fetchPosts();
-  }, [sendRequest, start, currPage]);
+  }, [sendRequest, start, currPage, REACT_APP_URL]);
 
   return (
     <React.Fragment>

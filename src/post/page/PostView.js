@@ -28,7 +28,7 @@ const PostView = () => {
       } catch (error) {}
     };
     fetchPosts();
-  }, [sendRequest, postId]);
+  }, [sendRequest, postId, REACT_APP_URL]);
 
   // deletePost
   const postDeletedHandler = (deletedPostId) => {

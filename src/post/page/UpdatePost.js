@@ -65,7 +65,7 @@ const UpdatePost = () => {
       } catch (error) {}
     };
     fetchPosts();
-  }, [sendRequest, postId, setFormData]);
+  }, [sendRequest, postId, setFormData, REACT_APP_URL]);
 
   const postUpdateSubmitHandler = async (e) => {
     e.preventDefault();
