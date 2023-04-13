@@ -1,22 +1,19 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { surveyAction } from "../../store/survey";
 import Dropdown from "../../shared/components/FormElements/Dropdown";
 import Button from "../../shared/components/FormElements/Button";
-import Card from "../../shared/components/UIElement/Card";
-import Check from "../components/Check";
-import { surveyAction } from "../../store/survey";
+import SurveyCard from "../components/SurveyCard";
 
 import "../styles/Register.css";
 
 const Register = () => {
   const [selectedOpt, setSelectedOpt] = useState("");
-  const [checkOpt, setCheckOpt] = useState([]); // 체크박스 옵션
 
   const dispatch = useDispatch();
-  const surveyquestion = useSelector((state) => state.survey.questionItem);
-
-  const onChangeInput = () => {};
+  const surveyQuestion = useSelector((state) => state.survey.questionItem);
+  const checkOptions = useSelector((state) => state.check.checkOptions);
 
   const addListHandler = () => {
     if (selectedOpt === "") return;
@@ -40,13 +37,14 @@ const Register = () => {
     }
   };
 
-  const deleteHandler = (id) => {
-    dispatch(surveyAction.DELETE_SURVEY(id));
-  };
-
   const surveySubmitHandler = (e) => {
     e.preventDefault();
-    console.log(surveyquestion);
+
+    checkOptions.forEach((chkopt) => {
+      dispatch(surveyAction.PULS_CHECK(chkopt));
+    });
+
+    console.log(surveyQuestion);
   };
 
   return (
@@ -58,38 +56,16 @@ const Register = () => {
         </div>
         <form onSubmit={surveySubmitHandler}>
           <div className="survey-form">
-            {surveyquestion.map((item) => (
+            {surveyQuestion.map((item) => (
               <div
                 key={`survey-question-${item.id}`}
                 className="mid_survey-form"
               >
-                <Card className="input-card">
-                  <div className="delete-btn">
-                    <span onClick={() => deleteHandler(item.id)}>⛔</span>
-                  </div>
-                  <div className="select-option">{item.selectOption}</div>
-                  {item.selectOption === "체크박스" ? (
-                    <div>
-                      <input
-                        placeholder="check"
-                        value={item.question}
-                        onChange={() => onChangeInput()}
-                      />
-                      <Check
-                        checkQuestionId={item.id}
-                        checkOpt={checkOpt}
-                        setCheckOpt={setCheckOpt}
-                      />
-                    </div>
-                  ) : item.selectOption === "객관식" ||
-                    item.selectOption === "주관식" ? (
-                    <input
-                      placeholder="single"
-                      value={item.question}
-                      onChange={() => onChangeInput()}
-                    />
-                  ) : null}
-                </Card>
+                <SurveyCard
+                  id={item.id}
+                  selectOption={item.selectOption}
+                  question={item.question}
+                />
               </div>
             ))}
           </div>
