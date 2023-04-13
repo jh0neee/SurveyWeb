@@ -1,50 +1,32 @@
-import React, { useRef } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { checkAction } from "../../store/check";
 
 import "../styles/Check.css";
 
 const Check = (props) => {
-  const { checkQuestionId, checkOpt, setCheckOpt } = props;
-  const checkOptId = useRef(1); // check option Id
+  const { checkQuestionId } = props;
+
+  const dispatch = useDispatch();
+  const checkOptions = useSelector((state) => state.check.checkOptions);
 
   const onClickCheck = (id) => {
-    const option = {
-      id: checkOptId.current,
-      value: "",
-    };
-    checkOptId.current += 1;
-
-    // 옵션 추가 누르면 해당하는 CheckOpt의 [checkQuestionId]에 데이터 추가
-    const checkOptArray = checkOpt.filter((item) => item.id === id);
-    if (checkOptArray.length !== 0) {
-      let new_ChkOpt = checkOptArray[0][id].concat(option);
-      checkOptArray[0][id] = new_ChkOpt;
-      setCheckOpt([...checkOpt]);
-    } else {
-      setCheckOpt([...checkOpt, { id: checkQuestionId, [id]: [option] }]);
-    }
+    dispatch(checkAction.CREATE_CHECK(id));
   };
 
   const onChangeCheck = (e, id, index) => {
-    if (checkOpt !== undefined) {
-      let optFindIndex = checkOpt.findIndex((item) => item.id === id);
-      let copiedOpt = [...checkOpt];
-      copiedOpt[optFindIndex][id][index].value = e.target.value;
-      setCheckOpt(copiedOpt);
-    }
+    dispatch(checkAction.CHANGE_CHECK({ optValue: e.target.value, id, index }));
   };
 
   const onDeleteCheck = (optArray, id, item) => {
-    let optFindIndex = checkOpt.findIndex((item) => item.id === id);
-    let copiedArray = [...checkOpt];
-    const deletedArray = optArray[id].filter((opt) => opt.id !== item.id);
-    copiedArray[optFindIndex][id] = deletedArray;
-    setCheckOpt(copiedArray);
+    dispatch(checkAction.DELETE_CHECK({ optArray, id, item }));
   };
 
   return (
     <React.Fragment>
       <div className="check-option">
-        {checkOpt.map((elem) =>
+        {checkOptions.map((elem) =>
           elem.id === checkQuestionId
             ? elem[checkQuestionId].map((item, index) => (
                 <div key={`check-item-${item.id}`} className="check-item">
