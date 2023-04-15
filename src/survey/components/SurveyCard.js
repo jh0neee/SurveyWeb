@@ -42,6 +42,7 @@ const SurveyCard = (props) => {
             errorText="설문 내용을 입력해주세요."
             onInput={inputHandler}
           />
+          <p className="answer-box">{selectOption} 설문</p>
         </>
       ) : null}
     </Card>

@@ -9,10 +9,6 @@
   justify-content: flex-end;
 }
 
-.select-option {
-  padding: 10px 0;
-}
-
 .div-container {
   border: 1px solid black;
   width: 240px;
@@ -35,10 +31,6 @@
   scrollbar-width: thin;
 }
 
-/* .postttt::-webkit-scrollbar{
-  display: none;
-} */
-
 .mid_survey-form {
   /* 중앙정렬 */
   display: flex;
@@ -48,8 +40,20 @@
 .input-card {
   /* 카드 */
   width: 37rem;
-  /* padding: 50px 0; */
+  padding: 1rem 1rem 2rem;
   margin: 10px 0;
+}
+
+.delete-btn {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.answer-box {
+  color: #dee2e6;
+  border-bottom: 2px dotted #dee2e6;
+  padding-bottom: 5px;
+  margin: 2.44rem 1.5rem 1.44rem;
 }
 
 /* 스크롤바 커스텀 */

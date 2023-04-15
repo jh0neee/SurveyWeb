@@ -45,7 +45,7 @@ const Check = (props) => {
             : null
         )}
       </div>
-      <span onClick={() => onClickCheck(checkQuestionId)}>옵션추가</span>
+      <span className="plus-opt" onClick={() => onClickCheck(checkQuestionId)}>옵션추가</span>
     </React.Fragment>
   );
 };

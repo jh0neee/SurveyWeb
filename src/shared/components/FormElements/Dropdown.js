@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import "./Dropdown.css";
 
 const options = [
-  { id: 1, item: "객관식" },
-  { id: 2, item: "주관식" },
+  { id: 1, item: "단답형" },
+  { id: 2, item: "장문형" },
   { id: 3, item: "체크박스" },
 ];
 
