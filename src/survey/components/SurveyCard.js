@@ -4,14 +4,12 @@ import { useDispatch } from "react-redux";
 import { surveyAction } from "../../store/survey";
 import Card from "../../shared/components/UIElement/Card";
 import Check from "./Check";
+import Input from "../../shared/components/FormElements/Input";
+import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
 
 const SurveyCard = (props) => {
-  const { id, selectOption, question } = props;
+  const { id, selectOption, inputHandler } = props;
   const dispatch = useDispatch();
-
-  const onChangeInput = (e, id) => {
-    dispatch(surveyAction.CHANGE_INPUT({ inputValue: e.target.value, id }));
-  };
 
   const deleteHandler = (id) => {
     dispatch(surveyAction.DELETE_SURVEY(id));
@@ -22,22 +20,29 @@ const SurveyCard = (props) => {
       <div className="delete-btn">
         <span onClick={() => deleteHandler(id)}>⛔</span>
       </div>
-      <div className="select-option">{selectOption}</div>
       {selectOption === "체크박스" ? (
-        <div>
-          <input
-            placeholder="check"
-            value={question}
-            onChange={(e) => onChangeInput(e, id)}
+        <>
+          <Input
+            id="question"
+            element="input"
+            label="Q."
+            validators={[VALIDATOR_REQUIRE()]}
+            errorText="설문 내용을 입력해주세요."
+            onInput={inputHandler}
           />
           <Check checkQuestionId={id} />
-        </div>
-      ) : selectOption === "객관식" || selectOption === "주관식" ? (
-        <input
-          placeholder="single"
-          value={question}
-          onChange={(e) => onChangeInput(e, id)}
-        />
+        </>
+      ) : selectOption === "단답형" || selectOption === "장문형" ? (
+        <>
+          <Input
+            id="question"
+            element="input"
+            label="Q."
+            validators={[VALIDATOR_REQUIRE()]}
+            errorText="설문 내용을 입력해주세요."
+            onInput={inputHandler}
+          />
+        </>
       ) : null}
     </Card>
   );
