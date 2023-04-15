@@ -15,7 +15,7 @@ const inputReducer = (state, action) => {
       return {
         ...state,
         isTouched: true,
-      }
+      };
     default:
       return state;
   }
@@ -43,9 +43,10 @@ const Input = (props) => {
     });
   };
 
+  // 입력요소에서 포커스 잃었을 때
   const touchHandler = () => {
     dispatch({
-      type: 'TOUCH'
+      type: "TOUCH",
     });
   };
 
@@ -56,7 +57,9 @@ const Input = (props) => {
         type={props.type}
         onChange={changeHandler}
         onBlur={touchHandler}
+        placeholder={props.label}
         value={inputState.value}
+        required
       />
     ) : (
       <textarea
@@ -64,7 +67,9 @@ const Input = (props) => {
         rows={props.rows || 5}
         onChange={changeHandler}
         onBlur={touchHandler}
+        placeholder={props.label}
         value={inputState.value}
+        required
       />
     );
 
@@ -74,8 +79,8 @@ const Input = (props) => {
         !inputState.isValid && inputState.isTouched && "form-control--invalid"
       }`}
     >
-      <label htmlFor={props.id}>{props.label}</label>
       {element}
+      <label htmlFor={props.id}>{props.label}</label>
       {!inputState.isValid && inputState.isTouched && <p>{props.errorText}</p>}
     </div>
   );

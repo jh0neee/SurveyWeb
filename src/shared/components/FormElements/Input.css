@@ -1,42 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .form-control {
-    margin: 1rem 0;
-  }
-  
-  .form-control label,
-  .form-control input,
-  .form-control textarea {
-    display: block;
-  }
-  
-  .form-control label {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
-  
-  .form-control input,
-  .form-control textarea {
-    width: 100%;
-    font: inherit;
-    outline: 0;
-    border: 0;
-    border-bottom: 2px solid #ccc;
-    background: transparent;
-    padding: 0.15rem 0.25rem;
-  }
-  
-  .form-control input:focus,
-  .form-control textarea:focus {
-    outline: none;
-    border-color: #00A4FA;
-  }
-  
-  .form-control--invalid label,
-  .form-control--invalid p {
-    padding-top: 8px;
-    color: red;
-  }
-  
-  .form-control--invalid input,
-  .form-control--invalid textarea {
-    border-color: red;
-  }
+  position: relative;
+  margin: 1.5rem 0;
+  padding: 23px 1.5rem 0;
+}
+
+.form-control input,
+.form-control textarea {
+  width: 100%;
+  outline: 0;
+  border: 0;
+  border-bottom: 2px solid #ccc;
+  padding: 0.1rem 0.25rem;
+  font-size: 17px;
+  background: transparent;
+  transition: 0.3s ease;
+}
+
+.form-control label {
+  display: block;
+  position: absolute;
+  padding: 0;
+  top: 0;
+  color: #ccc;
+  transition: 0.3s ease;
+}
+
+.form-control input::placeholder,
+.form-control textarea::placeholder {
+  color: transparent;
+}
+
+.form-control input:placeholder-shown~label,
+.form-control textarea:placeholder-shown~label {
+  top: 1.8rem;
+}
+
+/* valid일때 색상 */
+.form-control input:focus,
+.form-control input:valid,
+.form-control textarea:focus,
+.form-control textarea:valid {
+  border-color: #00A4FA;
+}
+
+.form-control input:focus~label,
+.form-control input:valid~label,
+.form-control textarea:focus~label,
+.form-control textarea:valid~label {
+  display: block;
+  position: absolute;
+  top: 0;
+  color: #00A4FA;
+}
+
+/* invalid일때 색상 */
+.form-control--invalid input,
+.form-control--invalid input:focus,
+.form-control--invalid input:valid,
+.form-control--invalid textarea,
+.form-control--invalid textarea:focus,
+.form-control--invalid textarea:valid {
+  border-color: red;
+}
+
+.form-control--invalid input~label,
+.form-control--invalid input:focus~label,
+.form-control--invalid input:valid~label,
+.form-control--invalid textarea~label,
+.form-control--invalid textarea:focus~label,
+.form-control--invalid textarea:valid~label {
+  display: block;
+  position: absolute;
+  top: 0;
+  color: red;
+}
+
+.form-control--invalid p {
+  padding-top: 8px;
+  color: red;
+}
