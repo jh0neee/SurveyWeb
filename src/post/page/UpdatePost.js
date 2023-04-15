@@ -111,7 +111,7 @@ const UpdatePost = () => {
             id="title"
             element="input"
             type="text"
-            lable="Title"
+            label="Title"
             validators={[VALIDATOR_REQUIRE()]}
             errorText="입력해주세요"
             onInput={inputHandler}
@@ -121,7 +121,7 @@ const UpdatePost = () => {
           <Input
             id="content"
             element="textarea"
-            lable="Content"
+            label="Content"
             validators={[VALIDATOR_MINLENGTH(5)]}
             errorText="입력해주세요"
             onInput={inputHandler}
