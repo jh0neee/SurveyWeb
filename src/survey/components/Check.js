@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { checkAction } from "../../store/check";
+import { surveyAction } from "../../store/survey";
 
 import "../styles/Check.css";
 
@@ -22,6 +23,12 @@ const Check = (props) => {
   const onDeleteCheck = (optArray, id, item) => {
     dispatch(checkAction.DELETE_CHECK({ optArray, id, item }));
   };
+
+  useEffect(() => {
+    checkOptions.forEach((chkopt) => {
+      dispatch(surveyAction.PULS_CHECK(chkopt));
+    });
+  }, [checkOptions, dispatch]);
 
   return (
     <React.Fragment>
@@ -45,7 +52,9 @@ const Check = (props) => {
             : null
         )}
       </div>
-      <span className="plus-opt" onClick={() => onClickCheck(checkQuestionId)}>옵션추가</span>
+      <span className="plus-opt" onClick={() => onClickCheck(checkQuestionId)}>
+        옵션추가
+      </span>
     </React.Fragment>
   );
 };

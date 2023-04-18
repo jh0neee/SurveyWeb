@@ -5,26 +5,13 @@ import { surveyAction } from "../../store/survey";
 import Dropdown from "../../shared/components/FormElements/Dropdown";
 import Button from "../../shared/components/FormElements/Button";
 import SurveyCard from "../components/SurveyCard";
-import { useForm } from "../../shared/hooks/form-hook";
 
 import "../styles/Register.css";
 
 const Register = () => {
   const [selectedOpt, setSelectedOpt] = useState("");
-
   const dispatch = useDispatch();
   const surveyQuestion = useSelector((state) => state.survey.questionItem);
-  const checkOptions = useSelector((state) => state.check.checkOptions);
-
-  const [formState, inputHandler] = useForm(
-    {
-      question: {
-        value: "",
-        isValid: false,
-      },
-    },
-    false
-  );
 
   const addListHandler = () => {
     if (selectedOpt === "") return;
@@ -51,19 +38,6 @@ const Register = () => {
   const surveySubmitHandler = (e) => {
     e.preventDefault();
 
-    surveyQuestion.forEach((item) => {
-      dispatch(
-        surveyAction.CHANGE_INPUT({
-          inputValue: formState.inputs.question.value,
-          id: item.id,
-        })
-      );
-    });
-
-    checkOptions.forEach((chkopt) => {
-      dispatch(surveyAction.PULS_CHECK(chkopt));
-    });
-
     console.log(surveyQuestion);
   };
 
@@ -81,11 +55,7 @@ const Register = () => {
                 key={`survey-question-${item.id}`}
                 className="mid_survey-form"
               >
-                <SurveyCard
-                  id={item.id}
-                  selectOption={item.selectOption}
-                  inputHandler={inputHandler}
-                />
+                <SurveyCard id={item.id} selectOption={item.selectOption} />
               </div>
             ))}
           </div>

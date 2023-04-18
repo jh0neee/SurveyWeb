@@ -1,15 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { surveyAction } from "../../store/survey";
+import { useForm } from "../../shared/hooks/form-hook";
 import Card from "../../shared/components/UIElement/Card";
 import Check from "./Check";
 import Input from "../../shared/components/FormElements/Input";
 import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
 
 const SurveyCard = (props) => {
-  const { id, selectOption, inputHandler } = props;
+  const { id, selectOption } = props;
   const dispatch = useDispatch();
+
+  const [formState, inputHandler] = useForm(
+    {
+      question: {
+        value: "",
+        isValid: false,
+      },
+    },
+    false
+  );
+
+  const { value } = formState.inputs.question;
+
+  useEffect(() => {
+    dispatch(
+      surveyAction.CHANGE_INPUT({
+        inputValue: value,
+        id,
+      })
+    );
+  }, [dispatch, value, id]);
 
   const deleteHandler = (id) => {
     dispatch(surveyAction.DELETE_SURVEY(id));
