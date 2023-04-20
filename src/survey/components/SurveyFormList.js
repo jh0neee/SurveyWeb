@@ -10,7 +10,7 @@ const SurveyFormList = (props) => {
 
   const onCheckedItem = (key, checked, value) => {
     if (checked) {
-      // 체크된 값 배열에 추가 ->  체크 
+      // 체크된 값 배열에 추가 ->  체크
       setCheckedList([...checkedList, value]);
 
       if (key in surveyAnswer) {
@@ -43,15 +43,18 @@ const SurveyFormList = (props) => {
   return (
     <>
       <form onSubmit={onSubmit}>
-        {props.items.map((survey) => (
+        {props.items.questions.map((survey) => (
           <Card className="survey_card" key={`survey-answer-${survey.id}`}>
             <div className="survey">
-              {survey.selectedOpt === "체크박스" ? (
+              {survey.selectOption === "체크박스" ? (
                 <>
                   <b>Q. {survey.question}</b>
                   <div className="check-box">
-                    {survey.option.map((list) => (
-                      <div key={`check-option-${list.id}`} className="check-options">
+                    {survey.options.map((list) => (
+                      <div
+                        key={`check-option-${list.id}`}
+                        className="check-options"
+                      >
                         <input
                           id={survey.id}
                           type="checkbox"
