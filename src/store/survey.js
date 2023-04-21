@@ -28,7 +28,7 @@ const surveySlice = createSlice({
       let findIndex = state.questionItem.findIndex(
         (item) => item.id === chkopt.id
       );
-      state.questionItem[findIndex].option = chkopt[chkopt.id];
+      state.questionItem[findIndex].options = chkopt[chkopt.id];
     },
   },
 });

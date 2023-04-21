@@ -33,7 +33,7 @@ const Register = () => {
           id: "c" + Date.now(),
           selectOption: selectedOpt,
           question: "",
-          option: [],
+          options: [],
         })
       );
     } else {
