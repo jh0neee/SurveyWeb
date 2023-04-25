@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { createGlobalStyle } from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -225,7 +226,9 @@ const Home = () => {
   const happy = `${process.env.PUBLIC_URL}/image/happy.png`;
   const nervous = `${process.env.PUBLIC_URL}/image/nervous.png`;
   const surprised = `${process.env.PUBLIC_URL}/image/surprised.png`;
+  
   const [imgSrc, setImgSrc] = useState();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -254,7 +257,7 @@ const Home = () => {
             각자의 응답이 모여 더 개선된 환경을 만들어 낼 수 있습니다!
             <br /> 직관적인 결과를 바로 확인해보실 수 있습니다.
           </Explanation>
-          <GotoBtn>설문하러가기</GotoBtn>
+          <GotoBtn onClick={() => navigate("/survey")}>설문하러가기</GotoBtn>
         </TextBox>
         <Thumb>
           <ThumbText>Click Here!</ThumbText>
