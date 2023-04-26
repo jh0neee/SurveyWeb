@@ -13,7 +13,6 @@ import PostView from "./post/page/PostView";
 import NewPost from "./post/page/NewPost";
 import UpdatePost from "./post/page/UpdatePost";
 import Auth from "./main/pages/Auth";
-import ReqSurvey from "./main/pages/ReqSurvey";
 import Register from "./survey/pages/Register";
 import SurveyForm from "./survey/pages/SurveyForm";
 import { AuthContext } from "./shared/context/auth-context";
@@ -29,7 +28,6 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/survey/*" element={<Survey />} />
-        <Route path="/request" element={<ReqSurvey />} />
         <Route path="/:postId/content" element={<PostView />} />
         <Route path="/post/new" element={<NewPost />} />
         <Route path="/:postId/update" element={<UpdatePost />} />
