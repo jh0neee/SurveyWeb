@@ -31,20 +31,22 @@ const SurveyForm = () => {
     fetchSurveys();
   }, [sendRequest, postId, REACT_APP_URL]);
 
-  console.log(loadedSurveys);
-
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       {isLoading && (
-        <div className="center">
+        <div className='center'>
           <LoadingSpinner />
         </div>
       )}
       {!isLoading && loadedSurveys && (
         <>
           <h2>설문하기</h2>
-          <SurveyFormList items={loadedSurveys} />
+          <SurveyFormList
+            items={loadedSurveys}
+            sendRequest={sendRequest}
+            postId={postId}
+          />
         </>
       )}
     </React.Fragment>

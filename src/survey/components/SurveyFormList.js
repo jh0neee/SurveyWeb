@@ -3,8 +3,11 @@ import Card from "../../shared/components/UIElement/Card";
 import Button from "../../shared/components/FormElements/Button";
 
 import "../styles/SurveyForm.css";
+import { useNavigate } from "react-router-dom";
 
-const SurveyFormList = (props) => {
+const SurveyFormList = ({ items, sendRequest, postId }) => {
+  const { REACT_APP_URL } = process.env;
+  const navigate = useNavigate();
   const [checkedList, setCheckedList] = useState([]); // 체크된 값 확인
   const [surveyAnswer, setSurveyAnswer] = useState({}); // 설문답변 저장
 
@@ -37,27 +40,37 @@ const SurveyFormList = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(surveyAnswer);
+    try {
+      sendRequest(
+        REACT_APP_URL + `/survey/${items.id}/answers`,
+        "POST",
+        JSON.stringify({ answers: surveyAnswer }),
+        {
+          "Content-Type": "application/json",
+        }
+      );
+
+      navigate(`/${postId}/content`);
+    } catch (err) {}
   };
 
   return (
     <>
       <form onSubmit={onSubmit}>
-        {props.items.questions.map((survey) => (
-          <Card className="survey_card" key={`survey-answer-${survey.id}`}>
-            <div className="survey">
+        {items.questions.map((survey) => (
+          <Card className='survey_card' key={`survey-answer-${survey.id}`}>
+            <div className='survey'>
               {survey.selectOption === "체크박스" ? (
                 <>
                   <b>Q. {survey.question}</b>
-                  <div className="check-box">
+                  <div className='check-box'>
                     {survey.options.map((list) => (
                       <div
                         key={`check-option-${list.id}`}
-                        className="check-options"
-                      >
+                        className='check-options'>
                         <input
                           id={survey.id}
-                          type="checkbox"
+                          type='checkbox'
                           onChange={(e) =>
                             onCheckedItem(
                               survey.id,
@@ -70,7 +83,7 @@ const SurveyFormList = (props) => {
                             checkedList.includes(list.value) ? true : false
                           }
                         />
-                        <label htmlFor="list.id">{list.value}</label>
+                        <label htmlFor='list.id'>{list.value}</label>
                       </div>
                     ))}
                   </div>
@@ -79,8 +92,8 @@ const SurveyFormList = (props) => {
                 <div>
                   <b> Q. {survey.question}</b>
                   <input
-                    className="text-input"
-                    type="text"
+                    className='text-input'
+                    type='text'
                     onChange={(e) => handleInputValue(`${survey.id}`, e)}
                   />
                 </div>
@@ -88,8 +101,8 @@ const SurveyFormList = (props) => {
             </div>
           </Card>
         ))}
-        <div className="center survey_button">
-          <Button type="submit">제출하기</Button>
+        <div className='center survey_button'>
+          <Button type='submit'>제출하기</Button>
         </div>
       </form>
     </>
