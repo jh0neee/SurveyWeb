@@ -88,11 +88,21 @@ const SurveyFormList = ({ items, sendRequest, postId }) => {
                     ))}
                   </div>
                 </>
-              ) : (
+              ) : survey.selectOption === "단답형" ? (
                 <div>
                   <b> Q. {survey.question}</b>
                   <input
                     className='text-input'
+                    type='text'
+                    onChange={(e) => handleInputValue(`${survey.id}`, e)}
+                  />
+                </div>
+              ) : (
+                <div>
+                  <b> Q. {survey.question}</b>
+                  <textarea
+                    className='text-textarea'
+                    rows={5}
                     type='text'
                     onChange={(e) => handleInputValue(`${survey.id}`, e)}
                   />
