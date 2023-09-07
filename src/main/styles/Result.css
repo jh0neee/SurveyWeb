@@ -1,0 +1,29 @@
+.result {
+  margin: 2rem 1rem 1rem;
+  overflow-y: auto;
+  height: 200px;
+}
+
+.question {
+  margin: 1rem 0.5rem;
+}
+
+.question_title {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+}
+
+.question_title_sub {
+  font-size: 12px;
+  padding-left: 0.4rem;
+}
+
+.answer-list {
+  background: aliceblue;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
