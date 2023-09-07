@@ -3,6 +3,10 @@
   width: 100%;
 }
 
+.post-item__modal {
+  top: auto;
+}
+
 .post-item__modal-content {
   padding: 0;
 }
