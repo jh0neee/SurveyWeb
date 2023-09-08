@@ -9,6 +9,7 @@ import LoadingSpinner from "../../shared/components/UIElement/LoadingSpinner";
 import { AuthContext } from "../../shared/context/auth-context";
 import { useFetch } from "../../shared/hooks/fetch-hook";
 import "../styles/PostItem.css";
+import SurveyResult from "../../main/components/SurveyResult";
 
 const PostItem = (props) => {
   const { REACT_APP_URL } = process.env;
@@ -43,19 +44,20 @@ const PostItem = (props) => {
         show={showModal}
         onCancel={closeModalHandler}
         header={props.title}
-        contentClass="post-item__modal-content"
-        footerClass="post-item__modal-actions"
-        footer={<Button onClick={closeModalHandler}>닫기</Button>}
-      >
-        <div className="post-survey">
+        className='post-item__modal'
+        contentClass='post-item__modal-content'
+        footerClass='post-item__modal-actions'
+        footer={<Button onClick={closeModalHandler}>닫기</Button>}>
+        <div className='post-survey'>
           <h2>결과</h2>
+          <SurveyResult postId={props.id} />
         </div>
       </Modal>
       <Modal
         show={showConfirmModal}
         onCancel={cancelDeleteHandler}
-        header="게시글 삭제"
-        footerClass="post-item__modal-actions"
+        header='게시글 삭제'
+        footerClass='post-item__modal-actions'
         footer={
           <React.Fragment>
             <Button inverse onClick={cancelDeleteHandler}>
@@ -65,31 +67,30 @@ const PostItem = (props) => {
               DELETE
             </Button>
           </React.Fragment>
-        }
-      >
+        }>
         <p>삭제하시겠습니까? 삭제 후에는 취소할 수 없습니다.</p>
       </Modal>
       <li>
         {isLoading && <LoadingSpinner asOverlay />}
-        <div className="post-top-view-btn">
-          <Button to="/survey"> ◀ 목록 </Button>
+        <div className='post-top-view-btn'>
+          <Button to='/survey'> ◀ 목록 </Button>
         </div>
-        <div className="post-view-wrapper">
-          <div className="post-view">
-            <div className="post-title">
+        <div className='post-view-wrapper'>
+          <div className='post-view'>
+            <div className='post-title'>
               <label>{props.title}</label>
             </div>
-            <div className="post-info">
+            <div className='post-info'>
               <label>작성자</label>
               <p>{props.author.name}</p>
               <label>작성일</label>
               <p>{dayjs(props.createDate).format("YYYY-MM-DD")}</p>
             </div>
-            <div className="post-content">
+            <div className='post-content'>
               <label>{props.content}</label>
             </div>
           </div>
-          <div className="post-btn-wrap">
+          <div className='post-btn-wrap'>
             {auth.userId === props.author.id ? (
               <Button inverse to={`/${props.id}/register`}>
                 설문등록
