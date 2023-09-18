@@ -1,7 +1,7 @@
 .result {
-  margin: 2rem 1rem 1rem;
+  margin: 2rem 1rem 0;
   overflow-y: auto;
-  height: 200px;
+  height: 300px;
 }
 
 .question {
@@ -20,10 +20,41 @@
 }
 
 .answer-list {
+  display: flex;
+  justify-content: space-between;
   background: aliceblue;
   padding: 0.5rem 1rem;
   border-radius: 15px;
   margin: 0 0 0.5rem;
   font-size: 0.9rem;
   line-height: 1.3;
+}
+
+.answer-list span {
+  background-color: #98c9f4;
+  color: white;
+  padding: 3.35px 7px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.line {
+  width: 96%;
+  margin: 32px auto;
+}
+
+.no_line {
+  width: 0%;
+  margin: 16px 0;
+}
+
+.canvas_container {
+  display: flex;
+  justify-content: center;
+}
+
+.survey_canvas {
+  width: 250px !important;
+  height: 250px !important;
 }

@@ -4,7 +4,8 @@
 }
 
 .post-item__modal {
-  top: auto;
+  top: 22px;
+  width: 35rem;
 }
 
 .post-item__modal-content {
