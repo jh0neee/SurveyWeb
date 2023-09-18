@@ -156,13 +156,6 @@ const GotoBtn = styled.button`
   letter-spacing: 1px;
   cursor: pointer;
   text-decoration: none;
-
-  @media screen and (max-width: 1024px) {
-    margin-top: 40px;
-  }
-  @media screen and (max-width: 480px) {
-    margin-top: 20px;
-  }
 `;
 
 const Thumb = styled.ul`
