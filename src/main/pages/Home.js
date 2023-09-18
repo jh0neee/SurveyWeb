@@ -59,29 +59,13 @@ const CheckImg = styled.img`
 
   @media screen and (min-width: 1024px) {
     position: absolute;
-    bottom: 334px;
-    right: 205px;
+    bottom: 300px;
+    right: 200px;
     ${(props) =>
       props.medium &&
       css`
         display: none;
       `}
-  }
-
-  @media screen and (max-width: 600px) {
-    display: none;
-  }
-`;
-
-const CheckBox = styled.img`
-  position: absolute;
-  width: 41px;
-  height: 37px;
-  bottom: 11.1rem;
-  right: ${(props) => props.right};
-
-  @media screen and (min-width: 1024px) {
-    display: none;
   }
 
   @media screen and (max-width: 600px) {
@@ -107,7 +91,8 @@ const TextBox = styled.div`
   max-width: 600px;
 
   @media screen and (max-width: 1024px) {
-    top: -110px;
+    top: 100px;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -120,13 +105,14 @@ const TextBox = styled.div`
 
 const Description = styled.h2`
   color: #333;
-  padding-bottom: 2rem;
+  padding-bottom: 8rem;
   font-size: 4em;
   line-height: 0.9em;
   font-weight: 500;
 
   @media screen and (max-width: 600px) {
     background: #00a4fa;
+    font-size: 3.2em;
     padding: 40px;
     border-radius: 80px;
   }
@@ -144,9 +130,16 @@ const Explanation = styled.p`
 
   @media screen and (max-width: 1024px) {
     text-align: center;
+    font-size: 1.45rem;
+    line-height: 1.2;
   }
   @media screen and (max-width: 600px) {
     margin: 50px 0 25px 0;
+    font-size: 1.2rem;
+  }
+  @media screen and (max-width: 480px) {
+    margin: 50px 0 25px 0;
+    font-size: 0.9rem;
   }
 `;
 
@@ -164,8 +157,11 @@ const GotoBtn = styled.button`
   cursor: pointer;
   text-decoration: none;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1024px) {
     margin-top: 40px;
+  }
+  @media screen and (max-width: 480px) {
+    margin-top: 20px;
   }
 `;
 
@@ -217,8 +213,7 @@ const ThumbImg = styled.img`
   height: 50px;
 
   @media screen and (max-width: 1024px) {
-    width: 150px;
-    height: 150px;
+    display: none;
   }
 `;
 
@@ -226,7 +221,7 @@ const Home = () => {
   const happy = `${process.env.PUBLIC_URL}/image/happy.png`;
   const nervous = `${process.env.PUBLIC_URL}/image/nervous.png`;
   const surprised = `${process.env.PUBLIC_URL}/image/surprised.png`;
-  
+
   const [imgSrc, setImgSrc] = useState();
   const navigate = useNavigate();
 
@@ -237,9 +232,9 @@ const Home = () => {
         <Circle>
           <CheckImg
             src={`${process.env.PUBLIC_URL}/image/Check.png`}
-            alt="check_img"
+            alt='check_img'
           />
-          <MainImg src={imgSrc || happy} alt="happy" />
+          <MainImg src={imgSrc || happy} alt='happy' />
         </Circle>
         <TextBox>
           <Description>
@@ -262,38 +257,23 @@ const Home = () => {
         <Thumb>
           <ThumbText>Click Here!</ThumbText>
           <ThumbLine>
-            <CheckBox
-              right={"27rem"}
-              src={`${process.env.PUBLIC_URL}/image/checkbox.png`}
-              alt="check_box"
-            />
             <ThumbImg
               src={happy}
-              alt="happy"
+              alt='happy'
               onClick={() => setImgSrc(happy)}
             />
           </ThumbLine>
           <ThumbLine>
-            <CheckImg
-              medium={true}
-              src={`${process.env.PUBLIC_URL}/image/Check.png`}
-              alt="check_img"
-            />
             <ThumbImg
               src={nervous}
-              alt="nervous"
+              alt='nervous'
               onClick={() => setImgSrc(nervous)}
             />
           </ThumbLine>
           <ThumbLine>
-            <CheckBox
-              right={"1.5rem"}
-              src={`${process.env.PUBLIC_URL}/image/checkbox.png`}
-              alt="check_box"
-            />
             <ThumbImg
               src={surprised}
-              alt="surprise"
+              alt='surprise'
               onClick={() => setImgSrc(surprised)}
             />
           </ThumbLine>
