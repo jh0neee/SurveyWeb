@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import {
   BrowserRouter as Router,
   Navigate,
@@ -6,17 +6,19 @@ import {
   Routes,
 } from "react-router-dom";
 
+import LoadingSpinner from "./shared/components/UIElement/LoadingSpinner";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
-import Home from "./main/pages/Home";
-import Survey from "./main/pages/Survey";
-import PostView from "./post/page/PostView";
-import NewPost from "./post/page/NewPost";
-import UpdatePost from "./post/page/UpdatePost";
-import Auth from "./main/pages/Auth";
-import Register from "./survey/pages/Register";
-import SurveyForm from "./survey/pages/SurveyForm";
 import { AuthContext } from "./shared/context/auth-context";
 import { useAuth } from "./shared/hooks/auth-hook";
+
+const Home = React.lazy(() => import("./main/pages/Home"));
+const Survey = React.lazy(() => import("./main/pages/Survey"));
+const PostView = React.lazy(() => import("./post/page/PostView"));
+const NewPost = React.lazy(() => import("./post/page/NewPost"));
+const UpdatePost = React.lazy(() => import("./post/page/UpdatePost"));
+const Auth = React.lazy(() => import("./main/pages/Auth"));
+const Register = React.lazy(() => import("./survey/pages/Register"));
+const SurveyForm = React.lazy(() => import("./survey/pages/SurveyForm"));
 
 const App = () => {
   const { token, login, logout, userId } = useAuth();
@@ -26,25 +28,25 @@ const App = () => {
   if (token) {
     routes = (
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/survey/*" element={<Survey />} />
-        <Route path="/:postId/content" element={<PostView />} />
-        <Route path="/post/new" element={<NewPost />} />
-        <Route path="/:postId/update" element={<UpdatePost />} />
-        <Route path="/:postId/register" element={<Register />} />
-        <Route path="/:postId/survey" element={<SurveyForm />} />
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/survey/*' element={<Survey />} />
+        <Route path='/:postId/content' element={<PostView />} />
+        <Route path='/post/new' element={<NewPost />} />
+        <Route path='/:postId/update' element={<UpdatePost />} />
+        <Route path='/:postId/register' element={<Register />} />
+        <Route path='/:postId/survey' element={<SurveyForm />} />
+        <Route path='*' element={<Navigate to='/' />} />
       </Routes>
     );
   } else {
     routes = (
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/survey/*" element={<Survey />} />
-        <Route path="/:postId/content" element={<PostView />} />
-        <Route path="/auth" element={<Auth />} />
-        <Route path="/:postId/survey" element={<SurveyForm />} />
-        <Route path="*" element={<Navigate to="/auth" />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/survey/*' element={<Survey />} />
+        <Route path='/:postId/content' element={<PostView />} />
+        <Route path='/auth' element={<Auth />} />
+        <Route path='/:postId/survey' element={<SurveyForm />} />
+        <Route path='*' element={<Navigate to='/auth' />} />
       </Routes>
     );
   }
@@ -57,11 +59,19 @@ const App = () => {
         userId: userId,
         login: login,
         logout: logout,
-      }}
-    >
+      }}>
       <Router>
         <MainNavigation />
-        <main>{routes}</main>
+        <main>
+          <Suspense
+            fallback={
+              <div className='center'>
+                <LoadingSpinner />
+              </div>
+            }>
+            {routes}
+          </Suspense>
+        </main>
       </Router>
     </AuthContext.Provider>
   );
