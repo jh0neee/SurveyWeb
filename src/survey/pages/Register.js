@@ -13,7 +13,6 @@ import "../styles/Register.css";
 import LoadingSpinner from "../../shared/components/UIElement/LoadingSpinner";
 import { AuthContext } from "../../shared/context/auth-context";
 
-
 const Register = () => {
   const [selectedOpt, setSelectedOpt] = useState("");
   const auth = useContext(AuthContext);
@@ -50,48 +49,51 @@ const Register = () => {
   const surveySubmitHandler = (e) => {
     e.preventDefault();
 
-    try{
+    if (surveyQuestion.length === 0) {
+      alert("질문은 1개 이상 작성해야합니다.");
+      return;
+    }
+
+    try {
       sendRequest(
-        REACT_APP_URL + '/survey', 'POST',
+        REACT_APP_URL + "/survey",
+        "POST",
         JSON.stringify({
           questions: surveyQuestion,
-          postCreator: postId
+          postCreator: postId,
         }),
         {
           "Content-Type": "application/json",
           Authorization: "Bearer" + auth.token,
         }
       );
+
+      alert("설문이 등록되었습니다😉");
       navigate(`/${postId}/content`);
-    } catch(err){
-
-    }
-
-    console.log(surveyQuestion);
+    } catch (err) {}
   };
 
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      <div className="container">
-        <div className="dropbox">
+      <div className='container'>
+        <div className='dropbox'>
           <Dropdown selectedOpt={selectedOpt} setSelectedOpt={setSelectedOpt} />
           <Button onClick={addListHandler}>+</Button>
         </div>
         <form onSubmit={surveySubmitHandler}>
           {isLoading && <LoadingSpinner asOverlay />}
-          <div className="survey-form">
+          <div className='survey-form'>
             {surveyQuestion.map((item) => (
               <div
                 key={`survey-question-${item.id}`}
-                className="mid_survey-form"
-              >
+                className='mid_survey-form'>
                 <SurveyCard id={item.id} selectOption={item.selectOption} />
               </div>
             ))}
           </div>
-          <div className="center button-padding">
-            <Button type="submit">등록하기</Button>
+          <div className='center button-padding'>
+            <Button type='submit'>등록하기</Button>
           </div>
         </form>
       </div>
