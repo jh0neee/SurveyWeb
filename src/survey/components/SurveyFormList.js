@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import Card from "../../shared/components/UIElement/Card";
 import Button from "../../shared/components/FormElements/Button";
@@ -40,6 +41,22 @@ const SurveyFormList = ({ items, sendRequest, postId }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    const questionLength = items.questions.length;
+    let isEmpty;
+
+    for (const key in surveyAnswer) {
+      if (surveyAnswer[key] === [] || surveyAnswer[key] === "") {
+        isEmpty = true;
+      }
+      break;
+    }
+
+    if (isEmpty || Object.keys(surveyAnswer).length !== questionLength) {
+      alert("모든 설문에 응답해주세요.");
+      return;
+    }
+
     try {
       sendRequest(
         REACT_APP_URL + `/survey/${items.id}/answers`,
@@ -50,6 +67,7 @@ const SurveyFormList = ({ items, sendRequest, postId }) => {
         }
       );
 
+      alert("제출 완료되었습니다😊");
       navigate(`/${postId}/content`);
     } catch (err) {}
   };
