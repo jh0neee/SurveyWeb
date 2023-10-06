@@ -5,7 +5,7 @@ import "../styles/PostList.css";
 
 const PostList = (props) => {
   return (
-    <ul className="post-list">
+    <ul className='post-list'>
       {props.items.map((post) => (
         <PostItem
           key={post.id}
@@ -14,6 +14,7 @@ const PostList = (props) => {
           createDate={post.createDate}
           author={post.author}
           content={post.content}
+          hasSurvey={post.surveys.length !== 0}
           onDelete={props.onDeletePost}
         />
       ))}

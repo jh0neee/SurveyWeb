@@ -19,7 +19,13 @@ const PostItem = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
-  const openModalHandler = () => setShowModal(true);
+  const openModalHandler = () => {
+    if (!props.hasSurvey) {
+      alert("설문 결과 업데이트 중입니다. 잠시만 기다려주세요.");
+      return;
+    }
+    setShowModal(true);
+  };
   const closeModalHandler = () => setShowModal(false);
 
   const showDeleteWarningHandler = () => setShowConfirmModal(true);
@@ -92,11 +98,25 @@ const PostItem = (props) => {
           </div>
           <div className='post-btn-wrap'>
             {auth.userId === props.author.id ? (
-              <Button inverse to={`/${props.id}/register`}>
+              <Button
+                inverse
+                to={!props.hasSurvey ? `/${props.id}/register` : undefined}
+                onClick={() => {
+                  if (props.hasSurvey) {
+                    alert("이미 설문지가 등록되었습니다.");
+                  }
+                }}>
                 설문등록
               </Button>
             ) : (
-              <Button inverse to={`/${props.id}/survey`}>
+              <Button
+                inverse
+                to={props.hasSurvey ? `/${props.id}/survey` : undefined}
+                onClick={() => {
+                  if (!props.hasSurvey) {
+                    alert("설문지가 등록되지 않았습니다.");
+                  }
+                }}>
                 설문하기
               </Button>
             )}
