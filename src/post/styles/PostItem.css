@@ -54,6 +54,10 @@
   min-height: 20rem;
 }
 
+.content {
+  white-space: pre-line;
+}
+
 .post-btn-wrap {
   display: flex;
   justify-content: center;

@@ -93,7 +93,7 @@ const PostItem = (props) => {
               <p>{dayjs(props.createDate).format("YYYY-MM-DD")}</p>
             </div>
             <div className='post-content'>
-              <label>{props.content}</label>
+              <label className='content'>{props.content}</label>
             </div>
           </div>
           <div className='post-btn-wrap'>
