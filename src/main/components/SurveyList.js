@@ -2,28 +2,28 @@ import React from "react";
 
 import Button from "../../shared/components/FormElements/Button";
 import SurveyItem from "./SurveyItem";
-import "../styles/Survey.css";
 import Pagination from "../../shared/components/FormElements/Pagination";
+import "../styles/Survey.css";
 
 const SurveyList = (props) => {
   const data = props.items;
   const { currPage, setCurrPage } = props;
 
   return (
-    <div className="survey-board">
-      <div className="board-title">
-        <div className="tit_wrap">
+    <div className='survey-board'>
+      <div className='board-title'>
+        <div className='tit_wrap'>
           <strong>설문게시판</strong>
           <p>설문에 참여해보세요!</p>
         </div>
-        <div className="btn_wrap">
-          <Button to="/post/new">새 글쓰기</Button>
+        <div className='btn_wrap'>
+          <Button to='/post/new'>새 글쓰기</Button>
         </div>
       </div>
-      <div className="table_wrap">
-        <table className="table">
+      <div className='table_wrap'>
+        <table className='table'>
           <thead>
-            <tr className="table-header">
+            <tr className='table-header'>
               <th>제목</th>
               <th>작성자</th>
               <th>날짜</th>

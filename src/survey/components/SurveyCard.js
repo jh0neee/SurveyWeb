@@ -38,18 +38,18 @@ const SurveyCard = (props) => {
   };
 
   return (
-    <Card className="input-card">
-      <div className="delete-btn">
+    <Card className='input-card'>
+      <div className='delete-btn'>
         <span onClick={() => deleteHandler(id)}>⛔</span>
       </div>
       {selectOption === "체크박스" ? (
         <>
           <Input
-            id="question"
-            element="input"
-            label="Q."
+            id='question'
+            element='input'
+            label='Q.'
             validators={[VALIDATOR_REQUIRE()]}
-            errorText="설문 내용을 입력해주세요."
+            errorText='설문 내용을 입력해주세요.'
             onInput={inputHandler}
           />
           <Check checkQuestionId={id} />
@@ -57,14 +57,14 @@ const SurveyCard = (props) => {
       ) : selectOption === "단답형" || selectOption === "장문형" ? (
         <>
           <Input
-            id="question"
-            element="input"
-            label="Q."
+            id='question'
+            element='input'
+            label='Q.'
             validators={[VALIDATOR_REQUIRE()]}
-            errorText="설문 내용을 입력해주세요."
+            errorText='설문 내용을 입력해주세요.'
             onInput={inputHandler}
           />
-          <p className="answer-box">{selectOption} 설문</p>
+          <p className='answer-box'>{selectOption} 설문</p>
         </>
       ) : null}
     </Card>

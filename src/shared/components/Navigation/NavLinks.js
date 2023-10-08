@@ -8,9 +8,9 @@ const NavLinks = (props) => {
   const auth = useContext(AuthContext);
 
   return (
-    <ul className="nav-links">
+    <ul className='nav-links'>
       <li onClick={props.onClick}>
-        <NavLink to="/">홈</NavLink>
+        <NavLink to='/'>홈</NavLink>
       </li>
       <li onClick={props.onClick}>
         <NavLink to={"/survey"}>설문하기</NavLink>
@@ -20,7 +20,7 @@ const NavLinks = (props) => {
       </li>
       {!auth.isLoggedIn && (
         <li onClick={props.onClick}>
-          <NavLink to="/auth">로그인</NavLink>
+          <NavLink to='/auth'>로그인</NavLink>
         </li>
       )}
       {auth.isLoggedIn && (

@@ -5,11 +5,11 @@ import dayjs from "dayjs";
 import Button from "../../shared/components/FormElements/Button";
 import Modal from "../../shared/components/UIElement/Modal";
 import ErrorModal from "../../shared/components/UIElement/ErrorModal";
+import SurveyResult from "../../main/components/SurveyResult";
 import LoadingSpinner from "../../shared/components/UIElement/LoadingSpinner";
 import { AuthContext } from "../../shared/context/auth-context";
 import { useFetch } from "../../shared/hooks/fetch-hook";
 import "../styles/PostItem.css";
-import SurveyResult from "../../main/components/SurveyResult";
 
 const PostItem = (props) => {
   const { REACT_APP_URL } = process.env;

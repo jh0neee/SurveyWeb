@@ -16,13 +16,13 @@ const Dropdown = ({ selectedOpt, setSelectedOpt }) => {
   };
 
   return (
-    <div className="dropbox-container">
-      <div className="dropbox-select_btn" onClick={handleDropDown}>
+    <div className='dropbox-container'>
+      <div className='dropbox-select_btn' onClick={handleDropDown}>
         {selectedOpt === "" ? "선택해" : selectedOpt}
-        <span className="fas fa-caret-down"></span>
+        <span className='fas fa-caret-down'></span>
       </div>
       {isActive && (
-        <div className="dropdown">
+        <div className='dropdown'>
           {options.map((option) => (
             <div
               key={option.id}
@@ -30,8 +30,7 @@ const Dropdown = ({ selectedOpt, setSelectedOpt }) => {
                 setSelectedOpt(option.item);
                 setIsActive(false);
               }}
-              className="dropdown-option"
-            >
+              className='dropdown-option'>
               {option.item}
             </div>
           ))}

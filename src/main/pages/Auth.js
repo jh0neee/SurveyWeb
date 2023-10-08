@@ -100,41 +100,41 @@ const Auth = () => {
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      <Card className="authentication">
+      <Card className='authentication'>
         {isLoading && <LoadingSpinner asOverlay />}
         <h2>Login</h2>
         <hr />
         <form onSubmit={authSubmitHandler}>
           {!isLoginMode && (
             <Input
-              element="input"
-              id="name"
-              type="text"
-              label="이름"
+              element='input'
+              id='name'
+              type='text'
+              label='이름'
               validators={[VALIDATOR_REQUIRE()]}
-              errorText="이름을 입력하세요"
+              errorText='이름을 입력하세요'
               onInput={inputHandler}
             />
           )}
           <Input
-            id="email"
-            element="input"
-            type="email"
-            label="E-mail"
+            id='email'
+            element='input'
+            type='email'
+            label='E-mail'
             validators={[VALIDATOR_EMAIL()]}
-            errorText="이메일을 입력하세요"
+            errorText='이메일을 입력하세요'
             onInput={inputHandler}
           />
           <Input
-            id="password"
-            element="input"
-            type="password"
-            label="Password"
+            id='password'
+            element='input'
+            type='password'
+            label='Password'
             validators={[VALIDATOR_MINLENGTH(8)]}
-            errorText="비밀번호를 입력하세요"
+            errorText='비밀번호를 입력하세요'
             onInput={inputHandler}
           />
-          <Button type="submit" disabled={!formState.isValid}>
+          <Button type='submit' disabled={!formState.isValid}>
             {isLoginMode ? "로그인" : "가입하기"}
           </Button>
         </form>

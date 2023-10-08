@@ -36,8 +36,8 @@
   color: transparent;
 }
 
-.form-control input:placeholder-shown~label,
-.form-control textarea:placeholder-shown~label {
+.form-control input:placeholder-shown ~ label,
+.form-control textarea:placeholder-shown ~ label {
   top: 1.8rem;
 }
 
@@ -46,17 +46,17 @@
 .form-control input:valid,
 .form-control textarea:focus,
 .form-control textarea:valid {
-  border-color: #00A4FA;
+  border-color: #00a4fa;
 }
 
-.form-control input:focus~label,
-.form-control input:valid~label,
-.form-control textarea:focus~label,
-.form-control textarea:valid~label {
+.form-control input:focus ~ label,
+.form-control input:valid ~ label,
+.form-control textarea:focus ~ label,
+.form-control textarea:valid ~ label {
   display: block;
   position: absolute;
   top: 0;
-  color: #00A4FA;
+  color: #00a4fa;
 }
 
 /* invalid일때 색상 */
@@ -69,12 +69,12 @@
   border-color: red;
 }
 
-.form-control--invalid input~label,
-.form-control--invalid input:focus~label,
-.form-control--invalid input:valid~label,
-.form-control--invalid textarea~label,
-.form-control--invalid textarea:focus~label,
-.form-control--invalid textarea:valid~label {
+.form-control--invalid input ~ label,
+.form-control--invalid input:focus ~ label,
+.form-control--invalid input:valid ~ label,
+.form-control--invalid textarea ~ label,
+.form-control--invalid textarea:focus ~ label,
+.form-control--invalid textarea:valid ~ label {
   display: block;
   position: absolute;
   top: 0;

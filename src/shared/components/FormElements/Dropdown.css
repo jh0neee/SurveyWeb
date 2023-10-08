@@ -38,11 +38,10 @@
   color: #333;
 }
 
-
 .dropdown-option {
   padding: 10px;
   cursor: pointer;
-  transition: all 0.4s; 
+  transition: all 0.4s;
 }
 
 .dropdown-option:hover {

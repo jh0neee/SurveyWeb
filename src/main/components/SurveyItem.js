@@ -6,8 +6,8 @@ import "../styles/Survey.css";
 
 const SurveyItem = (props) => {
   return (
-    <tr className="table-row">
-      <td className="title">
+    <tr className='table-row'>
+      <td className='title'>
         <Link to={`/${props.id}/content`}>{props.title}</Link>
       </td>
       <td>{props.author.name}</td>

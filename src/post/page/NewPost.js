@@ -56,27 +56,27 @@ const NewPost = () => {
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      <form className="post-form" onSubmit={submitHandler}>
+      <form className='post-form' onSubmit={submitHandler}>
         {isLoading && <LoadingSpinner asOverlay />}
         <Input
-          id="title"
-          element="input"
-          type="text"
-          label="Title"
+          id='title'
+          element='input'
+          type='text'
+          label='Title'
           validators={[VALIDATOR_REQUIRE]}
-          errorText="입력하세요!"
+          errorText='입력하세요!'
           onInput={inputHandler}
         />
         <Input
-          id="content"
-          element="textarea"
-          label="Content"
+          id='content'
+          element='textarea'
+          label='Content'
           validators={[VALIDATOR_MINLENGTH(5)]}
-          errorText="입력하세요!"
+          errorText='입력하세요!'
           onInput={inputHandler}
         />
-        <div className="bottom-container">
-          <Button type="submit" disabled={!formState.isValid}>
+        <div className='bottom-container'>
+          <Button type='submit' disabled={!formState.isValid}>
             글 쓰기
           </Button>
         </div>

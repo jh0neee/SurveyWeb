@@ -1,14 +1,14 @@
 .authentication {
-    width: 90%;
-    max-width: 25rem;
-    margin: 7rem auto;
-    text-align: center;
+  width: 90%;
+  max-width: 25rem;
+  margin: 7rem auto;
+  text-align: center;
 }
 
 .authentication button {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .authentication form {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }

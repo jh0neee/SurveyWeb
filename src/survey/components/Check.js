@@ -32,19 +32,18 @@ const Check = (props) => {
 
   return (
     <React.Fragment>
-      <div className="check-option">
+      <div className='check-option'>
         {checkOptions.map((elem) =>
           elem.id === checkQuestionId
             ? elem[checkQuestionId].map((item, index) => (
-                <div key={`check-item-${item.id}`} className="check-item">
+                <div key={`check-item-${item.id}`} className='check-item'>
                   <input
                     value={item.value}
-                    placeholder="옵션 입력해주세요"
+                    placeholder='옵션 입력해주세요'
                     onChange={(e) => onChangeCheck(e, checkQuestionId, index)}
                   />
                   <span
-                    onClick={() => onDeleteCheck(elem, checkQuestionId, item)}
-                  >
+                    onClick={() => onDeleteCheck(elem, checkQuestionId, item)}>
                     ❌
                   </span>
                 </div>
@@ -52,7 +51,7 @@ const Check = (props) => {
             : null
         )}
       </div>
-      <span className="plus-opt" onClick={() => onClickCheck(checkQuestionId)}>
+      <span className='plus-opt' onClick={() => onClickCheck(checkQuestionId)}>
         옵션추가
       </span>
     </React.Fragment>

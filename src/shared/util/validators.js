@@ -1,21 +1,21 @@
-const VALIDATOR_TYPE_REQUIRE = 'REQUIRE'; // 필수
-const VALIDATOR_TYPE_MINLENGTH = 'MINLENGTH'; // 최소길이
-const VALIDATOR_TYPE_MAXLENGTH = 'MAXLENGTH'; // 최대길이
-const VALIDATOR_TYPE_MIN = 'MIN'; // 최솟값
-const VALIDATOR_TYPE_MAX = 'MAX'; // 최댓값
-const VALIDATOR_TYPE_EMAIL = 'EMAIL';
+const VALIDATOR_TYPE_REQUIRE = "REQUIRE"; // 필수
+const VALIDATOR_TYPE_MINLENGTH = "MINLENGTH"; // 최소길이
+const VALIDATOR_TYPE_MAXLENGTH = "MAXLENGTH"; // 최대길이
+const VALIDATOR_TYPE_MIN = "MIN"; // 최솟값
+const VALIDATOR_TYPE_MAX = "MAX"; // 최댓값
+const VALIDATOR_TYPE_EMAIL = "EMAIL";
 
 export const VALIDATOR_REQUIRE = () => ({ type: VALIDATOR_TYPE_REQUIRE });
-export const VALIDATOR_MINLENGTH = val => ({
+export const VALIDATOR_MINLENGTH = (val) => ({
   type: VALIDATOR_TYPE_MINLENGTH,
-  val: val
+  val: val,
 });
-export const VALIDATOR_MAXLENGTH = val => ({
+export const VALIDATOR_MAXLENGTH = (val) => ({
   type: VALIDATOR_TYPE_MAXLENGTH,
-  val: val
+  val: val,
 });
-export const VALIDATOR_MIN = val => ({ type: VALIDATOR_TYPE_MIN, val: val });
-export const VALIDATOR_MAX = val => ({ type: VALIDATOR_TYPE_MAX, val: val });
+export const VALIDATOR_MIN = (val) => ({ type: VALIDATOR_TYPE_MIN, val: val });
+export const VALIDATOR_MAX = (val) => ({ type: VALIDATOR_TYPE_MAX, val: val });
 export const VALIDATOR_EMAIL = () => ({ type: VALIDATOR_TYPE_EMAIL });
 
 export const validate = (value, validators) => {

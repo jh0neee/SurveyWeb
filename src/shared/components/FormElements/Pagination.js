@@ -6,7 +6,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 3rem; 
+  padding-top: 3rem;
 `;
 
 const Button = styled.button`
@@ -52,10 +52,12 @@ const ArrowButton = styled.button`
 const Pagination = ({ data, currPage, setCurrPage }) => {
   const [blockNum, setBlockNum] = useState(0);
 
-  const getPageNumbers = (data) => { // 페이지 개수
+  const getPageNumbers = (data) => {
+    // 페이지 개수
     const resultPages = [];
 
-    for (let i = 1; i <= Math.ceil(data?.total / 5); i++) { // 게시물 수를 5개씩 나누어 1페이지를 설정.
+    for (let i = 1; i <= Math.ceil(data?.total / 5); i++) {
+      // 게시물 수를 5개씩 나누어 1페이지를 설정.
       resultPages.push(i);
     }
     return resultPages;
@@ -89,8 +91,7 @@ const Pagination = ({ data, currPage, setCurrPage }) => {
           <Button
             key={`pagination-button-${page}`}
             active={currPage === page}
-            onClick={() => setCurrPage(page)}
-          >
+            onClick={() => setCurrPage(page)}>
             {page}
           </Button>
         );
@@ -98,8 +99,7 @@ const Pagination = ({ data, currPage, setCurrPage }) => {
       <ArrowButton
         flip
         disabled={limitArr.includes(maxPage) ? currPage : null}
-        onClick={() => onClickNextPage()}
-      >
+        onClick={() => onClickNextPage()}>
         <KeyboardArrowLeftIcon />
       </ArrowButton>
     </Container>

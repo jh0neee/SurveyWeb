@@ -88,7 +88,7 @@ const UpdatePost = () => {
 
   if (isLoading) {
     return (
-      <div className="center">
+      <div className='center'>
         <LoadingSpinner />
       </div>
     );
@@ -96,7 +96,7 @@ const UpdatePost = () => {
 
   if (!loadedPost && !error) {
     return (
-      <div className="center">
+      <div className='center'>
         <h2>찾을 수 없습니다.</h2>
       </div>
     );
@@ -106,30 +106,30 @@ const UpdatePost = () => {
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       {!isLoading && loadedPost && (
-        <form className="post-form" onSubmit={postUpdateSubmitHandler}>
+        <form className='post-form' onSubmit={postUpdateSubmitHandler}>
           <Input
-            id="title"
-            element="input"
-            type="text"
-            label="Title"
+            id='title'
+            element='input'
+            type='text'
+            label='Title'
             validators={[VALIDATOR_REQUIRE()]}
-            errorText="입력해주세요"
+            errorText='입력해주세요'
             onInput={inputHandler}
             initialValue={loadedPost.title}
             initialValid={true}
           />
           <Input
-            id="content"
-            element="textarea"
-            label="Content"
+            id='content'
+            element='textarea'
+            label='Content'
             validators={[VALIDATOR_MINLENGTH(5)]}
-            errorText="입력해주세요"
+            errorText='입력해주세요'
             onInput={inputHandler}
             initialValue={loadedPost.content}
             initialValid={true}
           />
-          <div className="bottom-container">
-            <Button type="submit" disabled={!formState.isValid}>
+          <div className='bottom-container'>
+            <Button type='submit' disabled={!formState.isValid}>
               수정
             </Button>
           </div>
