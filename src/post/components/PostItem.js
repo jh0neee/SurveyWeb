@@ -11,19 +11,31 @@ import { AuthContext } from "../../shared/context/auth-context";
 import { useFetch } from "../../shared/hooks/fetch-hook";
 import "../styles/PostItem.css";
 
-const PostItem = (props) => {
+const PostItem = ({
+  id,
+  title,
+  createDate,
+  author,
+  content,
+  survey,
+  onDelete,
+}) => {
   const { REACT_APP_URL } = process.env;
   const { isLoading, error, sendRequest, clearError } = useFetch();
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const hasSurvey = survey.length !== 0;
 
   const openModalHandler = () => {
-    if (!props.hasSurvey) {
+    const noneAnswer = survey && survey[0]?.answers.length === 0;
+
+    if (!hasSurvey || (hasSurvey && noneAnswer)) {
       alert("설문 결과 업데이트 중입니다. 잠시만 기다려주세요.");
       return;
     }
+
     setShowModal(true);
   };
   const closeModalHandler = () => setShowModal(false);
@@ -34,10 +46,10 @@ const PostItem = (props) => {
   const confirmDeleteHandler = async () => {
     setShowConfirmModal(false);
     try {
-      await sendRequest(REACT_APP_URL + `/posts/${props.id}`, "DELETE", null, {
+      await sendRequest(REACT_APP_URL + `/posts/${id}`, "DELETE", null, {
         Authorization: "Bearer " + auth.token,
       });
-      props.onDelete(props.id);
+      onDelete(id);
 
       navigate("/survey");
     } catch (err) {}
@@ -49,14 +61,14 @@ const PostItem = (props) => {
       <Modal
         show={showModal}
         onCancel={closeModalHandler}
-        header={props.title}
+        header={title}
         className='post-item__modal'
         contentClass='post-item__modal-content'
         footerClass='post-item__modal-actions'
         footer={<Button onClick={closeModalHandler}>닫기</Button>}>
         <div className='post-survey'>
           <h2>결과</h2>
-          <SurveyResult postId={props.id} />
+          <SurveyResult postId={id} />
         </div>
       </Modal>
       <Modal
@@ -84,25 +96,25 @@ const PostItem = (props) => {
         <div className='post-view-wrapper'>
           <div className='post-view'>
             <div className='post-title'>
-              <label>{props.title}</label>
+              <label>{title}</label>
             </div>
             <div className='post-info'>
               <label>작성자</label>
-              <p>{props.author.name}</p>
+              <p>{author.name}</p>
               <label>작성일</label>
-              <p>{dayjs(props.createDate).format("YYYY-MM-DD")}</p>
+              <p>{dayjs(createDate).format("YYYY-MM-DD")}</p>
             </div>
             <div className='post-content'>
-              <label className='content'>{props.content}</label>
+              <label className='content'>{content}</label>
             </div>
           </div>
           <div className='post-btn-wrap'>
-            {auth.userId === props.author.id ? (
+            {auth.userId === author.id ? (
               <Button
                 inverse
-                to={!props.hasSurvey ? `/${props.id}/register` : undefined}
+                to={!hasSurvey ? `/${id}/register` : undefined}
                 onClick={() => {
-                  if (props.hasSurvey) {
+                  if (hasSurvey) {
                     alert("이미 설문지가 등록되었습니다.");
                   }
                 }}>
@@ -111,9 +123,9 @@ const PostItem = (props) => {
             ) : (
               <Button
                 inverse
-                to={props.hasSurvey ? `/${props.id}/survey` : undefined}
+                to={hasSurvey ? `/${id}/survey` : undefined}
                 onClick={() => {
-                  if (!props.hasSurvey) {
+                  if (!hasSurvey) {
                     alert("설문지가 등록되지 않았습니다.");
                   }
                 }}>
@@ -121,10 +133,10 @@ const PostItem = (props) => {
               </Button>
             )}
             <Button onClick={openModalHandler}>결과</Button>
-            {auth.userId === props.author.id && (
-              <Button to={`/${props.id}/update`}>수정하기</Button>
+            {auth.userId === author.id && (
+              <Button to={`/${id}/update`}>수정하기</Button>
             )}
-            {auth.userId === props.author.id && (
+            {auth.userId === author.id && (
               <Button danger onClick={showDeleteWarningHandler}>
                 삭제하기
               </Button>

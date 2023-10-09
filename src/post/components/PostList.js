@@ -14,7 +14,7 @@ const PostList = (props) => {
           createDate={post.createDate}
           author={post.author}
           content={post.content}
-          hasSurvey={post.surveys.length !== 0}
+          survey={post.surveys}
           onDelete={props.onDeletePost}
         />
       ))}
