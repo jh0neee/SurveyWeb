@@ -91,6 +91,10 @@ a {
     margin-right: 0.5rem;
   }
 
+  .tit_wrap {
+    margin-left: 1rem;
+  }
+
   .tit_wrap strong {
     font-size: 2rem;
   }
