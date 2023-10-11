@@ -50,6 +50,18 @@
   height: 100%;
 }
 
+@media (min-width: 480px) {
+  .main-navigation__menu-btn {
+    width: 2.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .main-navigation__menu-btn span {
+    width: 100%;
+  }
+}
+
 @media (min-width: 768px) {
   .main-navigation__menu-btn {
     display: none;

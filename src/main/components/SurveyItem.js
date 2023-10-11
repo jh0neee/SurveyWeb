@@ -11,7 +11,7 @@ const SurveyItem = (props) => {
         <Link to={`/${props.id}/content`}>{props.title}</Link>
       </td>
       <td>{props.author.name}</td>
-      <td>{dayjs(props.createDate).format("YYYY-MM-DD")}</td>
+      <td className='date'>{dayjs(props.createDate).format("YYYY-MM-DD")}</td>
     </tr>
   );
 };

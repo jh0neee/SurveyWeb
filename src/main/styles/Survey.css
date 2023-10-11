@@ -79,3 +79,27 @@ a {
   text-decoration: underline;
   cursor: pointer;
 }
+
+@media (max-width: 480px) {
+  .survey-board {
+    padding: 80px 20px;
+  }
+
+  .btn_wrap a {
+    font-size: 13px;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .tit_wrap strong {
+    font-size: 2rem;
+  }
+
+  .table-row {
+    font-size: 13px;
+  }
+
+  .date {
+    padding-right: 1.2rem;
+  }
+}
