@@ -23,7 +23,7 @@ const SurveyResult = ({ postId }) => {
         });
 
         setQuestion(responseContent.questions);
-        setAnswers(responseContent.answers);
+        setAnswers((prevAnswer) => [...prevAnswer, ...responseContent.answers]);
       } catch (err) {}
     };
 
@@ -35,7 +35,7 @@ const SurveyResult = ({ postId }) => {
   };
 
   const renderSurveyResult = () => {
-    const questionLastCount = question.length - 1;
+    const questionLastCount = question.length;
 
     return question.map((question, idx) => {
       // 현재 질문에 해당하는 응답 데이터

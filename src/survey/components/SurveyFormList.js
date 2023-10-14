@@ -36,11 +36,7 @@ const SurveyFormList = ({ items, sendRequest, postId }) => {
   };
 
   const handleInputValue = (key, e) => {
-    if (e.target.value === "") {
-      return;
-    } else {
-      setSurveyAnswer({ ...surveyAnswer, [key]: e.target.value });
-    }
+    setSurveyAnswer({ ...surveyAnswer, [key]: e.target.value });
   };
 
   const onSubmit = (e) => {
