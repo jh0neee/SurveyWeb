@@ -10,11 +10,16 @@
 
 .question_title {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   margin-bottom: 1rem;
 }
 
+.question_title > h3 {
+  width: 80%;
+}
+
 .question_title_sub {
+  width: 20%;
   font-size: 12px;
   padding-left: 0.4rem;
 }
