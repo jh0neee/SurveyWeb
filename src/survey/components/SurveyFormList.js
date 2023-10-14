@@ -46,7 +46,7 @@ const SurveyFormList = ({ items, sendRequest, postId }) => {
     let isEmpty;
 
     for (const key in surveyAnswer) {
-      if (surveyAnswer[key] === [] || surveyAnswer[key] === "") {
+      if (surveyAnswer[key].length === 0 || surveyAnswer[key] === "") {
         isEmpty = true;
       }
       break;
