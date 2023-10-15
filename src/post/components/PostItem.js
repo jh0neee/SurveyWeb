@@ -134,7 +134,9 @@ const PostItem = ({
             )}
             <Button onClick={openModalHandler}>결과</Button>
             {auth.userId === author.id && (
-              <Button to={`/${id}/update`}>수정하기</Button>
+              <Button to={`/${id}/update`} className='edit-button'>
+                수정하기
+              </Button>
             )}
             {auth.userId === author.id && (
               <Button danger onClick={showDeleteWarningHandler}>
