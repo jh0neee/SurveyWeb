@@ -1,6 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
+import { window } from "global";
 
 import Button from "../../shared/components/FormElements/Button";
 import Modal from "../../shared/components/UIElement/Modal";
@@ -26,9 +27,28 @@ const PostItem = ({
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const hasSurvey = survey.length !== 0;
 
   const openModalHandler = () => {
+    if (windowWidth <= 480) {
+      navigate(`/${id}/result`);
+      return;
+    }
+
     const noneAnswer = survey && survey[0]?.answers.length === 0;
 
     if (!hasSurvey || (hasSurvey && noneAnswer)) {
