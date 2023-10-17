@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useFetch } from "../../shared/hooks/fetch-hook";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
@@ -7,19 +8,22 @@ import "../styles/Result.css";
 
 const SurveyResult = ({ postId }) => {
   ChartJS.register(ArcElement, Tooltip, Legend);
+  const id = useParams().postId;
   const { REACT_APP_URL } = process.env;
   const { sendRequest } = useFetch();
   const [question, setQuestion] = useState([]);
   const [answers, setAnswers] = useState([]);
 
+  const selectedPostId = id || postId;
+
   useEffect(() => {
     const fetchResults = async () => {
       try {
         const responseData = await sendRequest(
-          REACT_APP_URL + `/survey/${postId}`
+          REACT_APP_URL + `/survey/${selectedPostId}`
         );
         const responseContent = responseData.surveys.find((item) => {
-          return item.postCreator === postId;
+          return item.postCreator === selectedPostId;
         });
 
         setQuestion(responseContent.questions);
@@ -28,7 +32,7 @@ const SurveyResult = ({ postId }) => {
     };
 
     fetchResults();
-  }, [sendRequest, postId, REACT_APP_URL]);
+  }, [sendRequest, selectedPostId, REACT_APP_URL]);
 
   const countResponsesByValue = (responses, value) => {
     return responses.filter((response) => response === value).length;
