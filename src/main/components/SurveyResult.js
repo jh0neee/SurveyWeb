@@ -13,8 +13,26 @@ const SurveyResult = ({ postId }) => {
   const { sendRequest } = useFetch();
   const [question, setQuestion] = useState([]);
   const [answers, setAnswers] = useState([]);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  const selectedPostId = id || postId;
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  let selectedPostId;
+  if (windowWidth <= 480) {
+    selectedPostId = id;
+  } else {
+    selectedPostId = postId;
+  }
 
   useEffect(() => {
     const fetchResults = async () => {
