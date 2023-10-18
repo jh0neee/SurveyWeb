@@ -13,7 +13,7 @@ import { useAuth } from "./shared/hooks/auth-hook";
 
 const Home = React.lazy(() => import("./main/pages/Home"));
 const Survey = React.lazy(() => import("./main/pages/Survey"));
-const MobileResult = React.lazy(() => import("./main/components/MobileResult"));
+const MobileResult = React.lazy(() => import("./main/pages/MobileResult"));
 const PostView = React.lazy(() => import("./post/page/PostView"));
 const NewPost = React.lazy(() => import("./post/page/NewPost"));
 const UpdatePost = React.lazy(() => import("./post/page/UpdatePost"));
