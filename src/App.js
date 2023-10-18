@@ -35,6 +35,7 @@ const App = () => {
         <Route path='/post/new' element={<NewPost />} />
         <Route path='/:postId/update' element={<UpdatePost />} />
         <Route path='/:postId/register' element={<Register />} />
+        <Route path='/:postId/result' element={<MobileResult />} />
         <Route path='/:postId/survey' element={<SurveyForm />} />
         <Route path='*' element={<Navigate to='/' />} />
       </Routes>

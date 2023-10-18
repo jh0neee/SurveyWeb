@@ -125,8 +125,13 @@ const SurveyResult = ({ postId }) => {
       return (
         <>
           <div key={question.id} className='question'>
-            <div className='question_title'>
-              <h3>Q. {question.question}</h3>
+            <div className='question_title_box'>
+              <h3
+                className={
+                  question.selectOption !== "체크박스" ? "title_main" : "title"
+                }>
+                Q. {question.question}
+              </h3>
               {question.selectOption !== "체크박스" && (
                 <p className='question_title_sub'>
                   (응답 {correspondingAnswer.responses.length}개)
