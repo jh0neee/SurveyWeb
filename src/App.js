@@ -13,7 +13,7 @@ import { useAuth } from "./shared/hooks/auth-hook";
 
 const Home = React.lazy(() => import("./main/pages/Home"));
 const Survey = React.lazy(() => import("./main/pages/Survey"));
-const SurveyResult = React.lazy(() => import("./main/components/SurveyResult"));
+const MobileResult = React.lazy(() => import("./main/components/MobileResult"));
 const PostView = React.lazy(() => import("./post/page/PostView"));
 const NewPost = React.lazy(() => import("./post/page/NewPost"));
 const UpdatePost = React.lazy(() => import("./post/page/UpdatePost"));
@@ -47,7 +47,7 @@ const App = () => {
         <Route path='/:postId/content' element={<PostView />} />
         <Route path='/auth' element={<Auth />} />
         <Route path='/:postId/survey' element={<SurveyForm />} />
-        <Route path='/:postId/result' element={<SurveyResult />} />
+        <Route path='/:postId/result' element={<MobileResult />} />
         <Route path='*' element={<Navigate to='/auth' />} />
       </Routes>
     );

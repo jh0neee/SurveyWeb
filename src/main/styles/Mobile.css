@@ -1,0 +1,9 @@
+.result-title {
+  margin: 0 2rem;
+  font-size: 1.3em;
+}
+
+.result-title > span {
+  margin-right: 0.5rem;
+  font-weight: 900;
+}
