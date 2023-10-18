@@ -3,7 +3,8 @@
   font-size: 1.3em;
 }
 
-.result-title > span {
+.result-title > a {
+  cursor: pointer;
   margin-right: 0.5rem;
   font-weight: 900;
 }
