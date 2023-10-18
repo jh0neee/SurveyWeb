@@ -43,11 +43,6 @@ const PostItem = ({
   const hasSurvey = survey.length !== 0;
 
   const openModalHandler = () => {
-    if (windowWidth <= 480) {
-      navigate(`/${id}/result`);
-      return;
-    }
-
     const noneAnswer = survey && survey[0]?.answers.length === 0;
 
     if (!hasSurvey || (hasSurvey && noneAnswer)) {
@@ -55,7 +50,11 @@ const PostItem = ({
       return;
     }
 
-    setShowModal(true);
+    if (windowWidth <= 480) {
+      navigate(`/${id}/result`);
+    } else {
+      setShowModal(true);
+    }
   };
   const closeModalHandler = () => setShowModal(false);
 
