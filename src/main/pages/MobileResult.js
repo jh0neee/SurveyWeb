@@ -1,19 +1,17 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import SurveyResult from "../components/SurveyResult";
-import Button from "../../shared/components/FormElements/Button";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import "../styles/Mobile.css";
 
 const MobileResult = () => {
   const postId = useParams().postId;
+  const navigate = useNavigate();
   return (
     <>
       <div className='result-title'>
-        <Button to={`/${postId}/content`}>
-          <ArrowBackIosNewIcon />
-        </Button>
+        <ArrowBackIosNewIcon onClick={navigate(-1)} />
         <h2>결과</h2>
       </div>
       <SurveyResult postId={postId} />
