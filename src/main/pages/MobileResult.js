@@ -11,7 +11,7 @@ const MobileResult = () => {
   return (
     <>
       <div className='result-title'>
-        <ArrowBackIosNewIcon onClick={navigate(-1)} />
+        <ArrowBackIosNewIcon onClick={() => navigate(-1)} />
         <h2>결과</h2>
       </div>
       <SurveyResult postId={postId} />
