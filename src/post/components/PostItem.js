@@ -126,7 +126,7 @@ const PostItem = ({
               <label className='content'>{content}</label>
             </div>
           </div>
-          <div className='post-btn-wrap'>
+          <div className='post-btn-wrapper'>
             {auth.userId === author.id ? (
               <Button
                 inverse

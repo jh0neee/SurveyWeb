@@ -13,21 +13,21 @@ a {
   margin-bottom: 1rem;
 }
 
-.tit_wrap {
+.title-wrapper {
   display: flex;
   flex-direction: column;
 }
 
-.tit_wrap strong {
+.title-wrapper strong {
   font-size: 3rem;
 }
 
-.tit_wrap p {
+.title-wrapper p {
   margin-top: 1.3rem;
   font-size: 0.9rem;
 }
 
-.btn_wrap {
+.btn-wrapper {
   margin-top: 1rem;
   text-align: end;
 }
@@ -38,7 +38,7 @@ a {
   line-height: 24px;
 }
 
-.table-wrap {
+.table-wrapper {
   min-height: 331.48px;
 }
 
@@ -85,17 +85,17 @@ a {
     padding: 80px 20px;
   }
 
-  .btn_wrap a {
+  .btn-wrapper a {
     font-size: 13px;
     padding: 0.5rem;
     margin-right: 0.5rem;
   }
 
-  .tit_wrap {
+  .title-wrapper {
     margin-left: 1rem;
   }
 
-  .tit_wrap strong {
+  .title-wrapper strong {
     font-size: 2rem;
   }
 

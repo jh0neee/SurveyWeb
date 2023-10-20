@@ -1,15 +1,15 @@
-.result-title {
+.result_title {
   display: flex;
   align-items: center;
   margin: 0 2rem;
 }
 
-.result-title > svg {
+.result_title > svg {
   cursor: pointer;
   margin-top: 0.2rem;
 }
 
-.result-title > h2 {
+.result_title > h2 {
   margin: 0 0 0 0.3rem;
   font-size: 1.3em;
 }

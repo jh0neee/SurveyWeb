@@ -125,7 +125,7 @@ const SurveyResult = ({ postId }) => {
       return (
         <>
           <div key={question.id} className='question'>
-            <div className='question_title_box'>
+            <div className='question-title-box'>
               <h3
                 className={
                   question.selectOption !== "체크박스" ? "title_main" : "title"
@@ -133,7 +133,7 @@ const SurveyResult = ({ postId }) => {
                 Q. {question.question}
               </h3>
               {question.selectOption !== "체크박스" && (
-                <p className='question_title_sub'>
+                <p className='question-title-sub'>
                   (응답 {correspondingAnswer.responses.length}개)
                 </p>
               )}
@@ -141,10 +141,10 @@ const SurveyResult = ({ postId }) => {
             {correspondingAnswer && (
               <ul>
                 {question.selectOption === "체크박스" ? (
-                  <div className='canvas_container'>
+                  <div className='canvas-container'>
                     <Doughnut
                       type='doughnut'
-                      className='survey_canvas'
+                      className='survey-canvas'
                       data={chartData}
                     />
                   </div>
@@ -164,7 +164,7 @@ const SurveyResult = ({ postId }) => {
               </ul>
             )}
           </div>
-          {isLastItem ? <hr className='no_line' /> : <hr className='line' />}
+          {isLastItem ? <hr className='no-line' /> : <hr className='line' />}
         </>
       );
     });

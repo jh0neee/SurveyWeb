@@ -87,7 +87,7 @@ const Register = () => {
             {surveyQuestion.map((item) => (
               <div
                 key={`survey-question-${item.id}`}
-                className='mid_survey-form'>
+                className='mid-survey-form'>
                 <SurveyCard id={item.id} selectOption={item.selectOption} />
               </div>
             ))}

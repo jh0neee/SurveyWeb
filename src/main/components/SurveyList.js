@@ -12,15 +12,15 @@ const SurveyList = (props) => {
   return (
     <div className='survey-board'>
       <div className='board-title'>
-        <div className='tit_wrap'>
+        <div className='title-wrapper'>
           <strong>설문게시판</strong>
           <p>설문에 참여해보세요!</p>
         </div>
-        <div className='btn_wrap'>
+        <div className='btn-wrapper'>
           <Button to='/post/new'>새 글쓰기</Button>
         </div>
       </div>
-      <div className='table_wrap'>
+      <div className='table-wrapper'>
         <table className='table'>
           <thead>
             <tr className='table-header'>

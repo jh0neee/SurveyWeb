@@ -76,7 +76,7 @@ const SurveyFormList = ({ items, sendRequest, postId }) => {
     <>
       <form onSubmit={onSubmit}>
         {items.questions.map((survey) => (
-          <Card className='survey_card' key={`survey-answer-${survey.id}`}>
+          <Card className='survey-card' key={`survey-answer-${survey.id}`}>
             <div className='survey'>
               {survey.selectOption === "체크박스" ? (
                 <>
@@ -129,7 +129,7 @@ const SurveyFormList = ({ items, sendRequest, postId }) => {
             </div>
           </Card>
         ))}
-        <div className='center survey_button'>
+        <div className='center survey-button'>
           <Button type='submit'>제출하기</Button>
         </div>
       </form>

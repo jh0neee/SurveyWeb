@@ -31,7 +31,7 @@
   scrollbar-width: thin;
 }
 
-.mid_survey-form {
+.mid-survey-form {
   /* 중앙정렬 */
   display: flex;
   justify-content: center;

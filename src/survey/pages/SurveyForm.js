@@ -41,7 +41,7 @@ const SurveyForm = () => {
       )}
       {!isLoading && loadedSurveys && (
         <>
-          <h2 className='survey_title'>설문하기</h2>
+          <h2 className='survey-title'>설문하기</h2>
           <SurveyFormList
             items={loadedSurveys}
             sendRequest={sendRequest}
