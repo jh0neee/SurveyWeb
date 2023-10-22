@@ -6,8 +6,9 @@
 React, Node.js, Express.js, MongoDB를 활용하여 만든 설문조사 웹사이트입니다.
 
 ## 개발 기간
-22.12 ~ 23.04
-23.09 ~ 23.10
+📅 22.12 ~ 23.04
+
+📅 23.09 ~ 23.10
 
 ## 개발 환경
 Environment : `Visual Studio Code`, `MongoDBCompass`, `Git`, `GitHub`
