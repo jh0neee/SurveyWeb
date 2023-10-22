@@ -10,16 +10,16 @@ React, Node.js, Express.js, MongoDB를 활용하여 만든 설문조사 웹사�
 23.09 ~ 23.10
 
 ## 개발 환경
-Environment : Visual Studio Code, MongoDBCompass, Git, GitHub
-Config : npm
-Development : JavaScript, React, Node.js, Express.js, MongoDB
+Environment : `Visual Studio Code`, `MongoDBCompass`, `Git`, `GitHub`
+
+Config : `npm`
+
+Development : `JavaScript`, `React`, `Node.js`, `Express.js`, `MongoDB`
 
 ## 주요기능
 #### 로그인 / 회원가입
  - 이메일 형식 & 패스워드 최소 8자 검증
  - 이메일 중복체크
-
-#### 게시글 작성 / 수정 / 삭제
 
 #### 설문등록
  - 질문유형 단답/장문/체크박스
