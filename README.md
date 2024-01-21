@@ -131,7 +131,7 @@ Development : `JavaScript`, `React`, `Node.js`, `Express.js`, `MongoDB`
 <br>
 
 ## 주요 기능
-<h3>:page_facing_up: <a href="https://drive.google.com/file/d/15sJD1y3WaVe4PnlT2LNuik13LP7L88p0/view?usp=drive_link">자세히 보기</a></h3>
+<h3>:page_facing_up: <a href="https://drive.google.com/file/d/1MvbYzE_tvXNm4z-wa0dWQPSNj-Lo1dQC/view?usp=drive_link)https://drive.google.com/file/d/1MvbYzE_tvXNm4z-wa0dWQPSNj-Lo1dQC/view?usp=drive_link">자세히 보기</a></h3>
 
 - 로그인 / 회원가입
 
